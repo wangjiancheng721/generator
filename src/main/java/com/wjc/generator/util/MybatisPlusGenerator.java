@@ -1,4 +1,4 @@
-package com.wms.basic.util;
+package com.wjc.generator.util;
 
 import java.util.ArrayList;
 import java.util.Collections;

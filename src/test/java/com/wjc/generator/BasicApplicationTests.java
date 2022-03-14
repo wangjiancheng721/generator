@@ -1,4 +1,4 @@
-package com.wms.basic;
+package com.wjc.generator;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
