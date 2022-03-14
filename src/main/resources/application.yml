@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://120.77.77.125:31433;databaseName=carmate
+    username: sa
+    password: hblh77126A
+#MyBatis Plus
+mybatis-plus:
+  type-aliases-package: com.prs.entity
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  #xia hua xian zhuan tuo feng
+  configuration:
+    map-underscore-to-camel-case: true
+
+
