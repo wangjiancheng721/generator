@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wms.basic.mapper.BaikMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.wms.basic.entity.Baik">
+        <id column="BID" property="bid" />
+        <result column="CODE" property="code" />
+        <result column="CCODE" property="ccode" />
+        <result column="CUST" property="cust" />
+        <result column="TDATE" property="tdate" />
+        <result column="EDATE" property="edate" />
+        <result column="TVOL" property="tvol" />
+        <result column="PRICE" property="price" />
+        <result column="APRICE" property="aprice" />
+        <result column="TAXRATE" property="taxrate" />
+        <result column="TAXKUBU" property="taxkubu" />
+        <result column="SOUSUUOUT" property="sousuuout" />
+        <result column="SOUOUTKINGAKU" property="sououtkingaku" />
+        <result column="FDATE" property="fdate" />
+        <result column="HOKAN" property="hokan" />
+        <result column="NOTE" property="note" />
+        <result column="SYSNOTE" property="sysnote" />
+        <result column="INPUTDATE" property="inputdate" />
+        <result column="INPUTUSER" property="inputuser" />
+    </resultMap>
+
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        BID, CODE, CCODE, CUST, TDATE, EDATE, TVOL, PRICE, APRICE, TAXRATE, TAXKUBU, SOUSUUOUT, SOUOUTKINGAKU, FDATE, HOKAN, NOTE, SYSNOTE, INPUTDATE, INPUTUSER
+    </sql>
+
+    <select id="getBASIC_XBAIKList" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM BASIC_XBAIK
+    </select>
+
+    <select id="getBASIC_XBAIKById" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+          FROM BASIC_XBAIK
+        WHERE
+            BID = #{bid}
+        and
+    </select>
+
+    <insert id="insertInfos">
+        INSERT INTO BASIC_XBAIK(BID, CODE, CCODE, CUST, TDATE, EDATE, TVOL, PRICE, APRICE, TAXRATE, TAXKUBU, SOUSUUOUT, SOUOUTKINGAKU, FDATE, HOKAN, NOTE, SYSNOTE, INPUTDATE, INPUTUSER)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+                #{item.bid},
+                #{item.code},
+                #{item.ccode},
+                #{item.cust},
+                #{item.tdate},
+                #{item.edate},
+                #{item.tvol},
+                #{item.price},
+                #{item.aprice},
+                #{item.taxrate},
+                #{item.taxkubu},
+                #{item.sousuuout},
+                #{item.sououtkingaku},
+                #{item.fdate},
+                #{item.hokan},
+                #{item.note},
+                #{item.sysnote},
+                #{item.inputdate},
+                #{item.inputuser},
+)
+        </foreach>
+    </insert>
+
+    <update id="updateById">
+        update BASIC_XBAIK set
+                BID = #{bid},
+                CODE = #{code},
+                CCODE = #{ccode},
+                CUST = #{cust},
+                TDATE = #{tdate},
+                EDATE = #{edate},
+                TVOL = #{tvol},
+                PRICE = #{price},
+                APRICE = #{aprice},
+                TAXRATE = #{taxrate},
+                TAXKUBU = #{taxkubu},
+                SOUSUUOUT = #{sousuuout},
+                SOUOUTKINGAKU = #{sououtkingaku},
+                FDATE = #{fdate},
+                HOKAN = #{hokan},
+                NOTE = #{note},
+                SYSNOTE = #{sysnote},
+                INPUTDATE = #{inputdate},
+                INPUTUSER = #{inputuser},
+        WHERE
+            BID = #{bid}
+        and
+    </update>
+
+    <delete id="deleteById">
+            delete from BASIC_XBAIK
+            WHERE
+                    BID = #{item.bid}
+                    and
+    </delete>
+
+    <delete id="deleteBatchIds">
+        <foreach collection="list" item="item" open = "(" close = ")" separator=",">
+        delete from BASIC_XBAIK
+            WHERE
+                 BID = #{item.bid}
+            and
+        </foreach>
+    </delete>
+
+</mapper>

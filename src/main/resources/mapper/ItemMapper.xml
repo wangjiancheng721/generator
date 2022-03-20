@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wms.basic.mapper.ItemMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.wms.basic.entity.Item">
+        <id column="CODE" property="code" />
+        <id column="BUMO" property="bumo" />
+        <result column="BUNR" property="bunr" />
+        <result column="VENDOR" property="vendor" />
+        <result column="FIXLEVEL" property="fixlevel" />
+        <result column="DKAKU" property="dkaku" />
+        <result column="KAKU" property="kaku" />
+        <result column="KOTEIM" property="koteim" />
+        <result column="STZAIK" property="stzaik" />
+        <result column="LEAD" property="lead" />
+        <result column="KOUKI" property="kouki" />
+        <result column="HOJYUU" property="hojyuu" />
+        <result column="KURIAGE" property="kuriage" />
+        <result column="JCODE" property="jcode" />
+        <result column="KOUTHIKI" property="kouthiki" />
+        <result column="HOKAN" property="hokan" />
+        <result column="NEXTBUMO" property="nextbumo" />
+        <result column="LOTH" property="loth" />
+        <result column="LOTS" property="lots" />
+        <result column="LOTS2" property="lots2" />
+        <result column="HIMOKU" property="himoku" />
+        <result column="FURYOU" property="furyou" />
+        <result column="LEAD2" property="lead2" />
+        <result column="TANIKOUKI" property="tanikouki" />
+        <result column="KOUKI2" property="kouki2" />
+        <result column="LINKSLIP" property="linkslip" />
+        <result column="NOKANRI" property="nokanri" />
+        <result column="PICKKU" property="pickku" />
+        <result column="PICKLOTS" property="picklots" />
+        <result column="SPICKKU" property="spickku" />
+        <result column="HCTENKANRI" property="hctenkanri" />
+        <result column="CHANGEKAKU" property="changekaku" />
+        <result column="MAXZAIK" property="maxzaik" />
+        <result column="MINZAIK" property="minzaik" />
+        <result column="STDCOUNT" property="stdcount" />
+        <result column="EMACOUNT" property="emacount" />
+        <result column="ZAIKMIN" property="zaikmin" />
+        <result column="TEMPZAIKMIN" property="tempzaikmin" />
+        <result column="MAXLOTH" property="maxloth" />
+        <result column="MAXLOTS" property="maxlots" />
+        <result column="LOTHT" property="lotht" />
+        <result column="LOTKIKAN" property="lotkikan" />
+        <result column="FLATJYUN" property="flatjyun" />
+        <result column="STZAIKEND" property="stzaikend" />
+        <result column="UCHIKIRI" property="uchikiri" />
+        <result column="MATOMEH" property="matomeh" />
+        <result column="CALEM" property="calem" />
+        <result column="HIKIKU" property="hikiku" />
+        <result column="HIKILOTS" property="hikilots" />
+        <result column="MINASIKUBU" property="minasikubu" />
+        <result column="MINASIGENDO" property="minasigendo" />
+        <result column="COMPO" property="compo" />
+        <result column="DOLOTBUNKATU" property="dolotbunkatu" />
+        <result column="PCAPA" property="pcapa" />
+        <result column="TANKAH" property="tankah" />
+        <result column="SSUMPRICE" property="ssumprice" />
+        <result column="STUMIPRICE" property="stumiprice" />
+        <result column="PKET" property="pket" />
+        <result column="GAKUJ" property="gakuj" />
+        <result column="KANZANZ" property="kanzanz" />
+        <result column="KANZANP" property="kanzanp" />
+        <result column="KANZANZA" property="kanzanza" />
+        <result column="KANZANJ" property="kanzanj" />
+        <result column="KANZANV" property="kanzanv" />
+        <result column="KANZANK" property="kanzank" />
+        <result column="TANI2" property="tani2" />
+        <result column="DFAKU" property="dfaku" />
+        <result column="DFAKU2" property="dfaku2" />
+        <result column="DFJKU" property="dfjku" />
+        <result column="DFJKU2" property="dfjku2" />
+        <result column="KENSA" property="kensa" />
+        <result column="KDESNAME" property="kdesname" />
+        <result column="SLNOHD" property="slnohd" />
+        <result column="SETGRP" property="setgrp" />
+        <result column="SETGRPRATIO" property="setgrpratio" />
+        <result column="KIGENKUBU" property="kigenkubu" />
+        <result column="KIGEN" property="kigen" />
+        <result column="ACTLIMIT" property="actlimit" />
+        <result column="HIKILIMIT" property="hikilimit" />
+        <result column="NOTE" property="note" />
+        <result column="SYSNOTE" property="sysnote" />
+        <result column="INPUTDATE" property="inputdate" />
+        <result column="INPUTUSER" property="inputuser" />
+    </resultMap>
+
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        CODE, BUNR, BUMO, VENDOR, FIXLEVEL, DKAKU, KAKU, KOTEIM, STZAIK, LEAD, KOUKI, HOJYUU, KURIAGE, JCODE, KOUTHIKI, HOKAN, NEXTBUMO, LOTH, LOTS, LOTS2, HIMOKU, FURYOU, LEAD2, TANIKOUKI, KOUKI2, LINKSLIP, NOKANRI, PICKKU, PICKLOTS, SPICKKU, HCTENKANRI, CHANGEKAKU, MAXZAIK, MINZAIK, STDCOUNT, EMACOUNT, ZAIKMIN, TEMPZAIKMIN, MAXLOTH, MAXLOTS, LOTHT, LOTKIKAN, FLATJYUN, STZAIKEND, UCHIKIRI, MATOMEH, CALEM, HIKIKU, HIKILOTS, MINASIKUBU, MINASIGENDO, COMPO, DOLOTBUNKATU, PCAPA, TANKAH, SSUMPRICE, STUMIPRICE, PKET, GAKUJ, KANZANZ, KANZANP, KANZANZA, KANZANJ, KANZANV, KANZANK, TANI2, DFAKU, DFAKU2, DFJKU, DFJKU2, KENSA, KDESNAME, SLNOHD, SETGRP, SETGRPRATIO, KIGENKUBU, KIGEN, ACTLIMIT, HIKILIMIT, NOTE, SYSNOTE, INPUTDATE, INPUTUSER
+    </sql>
+
+    <select id="getBASIC_XITEMList" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM BASIC_XITEM
+    </select>
+
+    <select id="getBASIC_XITEMById" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+          FROM BASIC_XITEM
+        WHERE
+            CODE = #{code}
+        and
+            BUMO = #{bumo}
+        and
+    </select>
+
+    <insert id="insertInfos">
+        INSERT INTO BASIC_XITEM(CODE, BUNR, BUMO, VENDOR, FIXLEVEL, DKAKU, KAKU, KOTEIM, STZAIK, LEAD, KOUKI, HOJYUU, KURIAGE, JCODE, KOUTHIKI, HOKAN, NEXTBUMO, LOTH, LOTS, LOTS2, HIMOKU, FURYOU, LEAD2, TANIKOUKI, KOUKI2, LINKSLIP, NOKANRI, PICKKU, PICKLOTS, SPICKKU, HCTENKANRI, CHANGEKAKU, MAXZAIK, MINZAIK, STDCOUNT, EMACOUNT, ZAIKMIN, TEMPZAIKMIN, MAXLOTH, MAXLOTS, LOTHT, LOTKIKAN, FLATJYUN, STZAIKEND, UCHIKIRI, MATOMEH, CALEM, HIKIKU, HIKILOTS, MINASIKUBU, MINASIGENDO, COMPO, DOLOTBUNKATU, PCAPA, TANKAH, SSUMPRICE, STUMIPRICE, PKET, GAKUJ, KANZANZ, KANZANP, KANZANZA, KANZANJ, KANZANV, KANZANK, TANI2, DFAKU, DFAKU2, DFJKU, DFJKU2, KENSA, KDESNAME, SLNOHD, SETGRP, SETGRPRATIO, KIGENKUBU, KIGEN, ACTLIMIT, HIKILIMIT, NOTE, SYSNOTE, INPUTDATE, INPUTUSER)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+                #{item.code},
+                #{item.bunr},
+                #{item.bumo},
+                #{item.vendor},
+                #{item.fixlevel},
+                #{item.dkaku},
+                #{item.kaku},
+                #{item.koteim},
+                #{item.stzaik},
+                #{item.lead},
+                #{item.kouki},
+                #{item.hojyuu},
+                #{item.kuriage},
+                #{item.jcode},
+                #{item.kouthiki},
+                #{item.hokan},
+                #{item.nextbumo},
+                #{item.loth},
+                #{item.lots},
+                #{item.lots2},
+                #{item.himoku},
+                #{item.furyou},
+                #{item.lead2},
+                #{item.tanikouki},
+                #{item.kouki2},
+                #{item.linkslip},
+                #{item.nokanri},
+                #{item.pickku},
+                #{item.picklots},
+                #{item.spickku},
+                #{item.hctenkanri},
+                #{item.changekaku},
+                #{item.maxzaik},
+                #{item.minzaik},
+                #{item.stdcount},
+                #{item.emacount},
+                #{item.zaikmin},
+                #{item.tempzaikmin},
+                #{item.maxloth},
+                #{item.maxlots},
+                #{item.lotht},
+                #{item.lotkikan},
+                #{item.flatjyun},
+                #{item.stzaikend},
+                #{item.uchikiri},
+                #{item.matomeh},
+                #{item.calem},
+                #{item.hikiku},
+                #{item.hikilots},
+                #{item.minasikubu},
+                #{item.minasigendo},
+                #{item.compo},
+                #{item.dolotbunkatu},
+                #{item.pcapa},
+                #{item.tankah},
+                #{item.ssumprice},
+                #{item.stumiprice},
+                #{item.pket},
+                #{item.gakuj},
+                #{item.kanzanz},
+                #{item.kanzanp},
+                #{item.kanzanza},
+                #{item.kanzanj},
+                #{item.kanzanv},
+                #{item.kanzank},
+                #{item.tani2},
+                #{item.dfaku},
+                #{item.dfaku2},
+                #{item.dfjku},
+                #{item.dfjku2},
+                #{item.kensa},
+                #{item.kdesname},
+                #{item.slnohd},
+                #{item.setgrp},
+                #{item.setgrpratio},
+                #{item.kigenkubu},
+                #{item.kigen},
+                #{item.actlimit},
+                #{item.hikilimit},
+                #{item.note},
+                #{item.sysnote},
+                #{item.inputdate},
+                #{item.inputuser},
+)
+        </foreach>
+    </insert>
+
+    <update id="updateById">
+        update BASIC_XITEM set
+                CODE = #{code},
+                BUNR = #{bunr},
+                BUMO = #{bumo},
+                VENDOR = #{vendor},
+                FIXLEVEL = #{fixlevel},
+                DKAKU = #{dkaku},
+                KAKU = #{kaku},
+                KOTEIM = #{koteim},
+                STZAIK = #{stzaik},
+                LEAD = #{lead},
+                KOUKI = #{kouki},
+                HOJYUU = #{hojyuu},
+                KURIAGE = #{kuriage},
+                JCODE = #{jcode},
+                KOUTHIKI = #{kouthiki},
+                HOKAN = #{hokan},
+                NEXTBUMO = #{nextbumo},
+                LOTH = #{loth},
+                LOTS = #{lots},
+                LOTS2 = #{lots2},
+                HIMOKU = #{himoku},
+                FURYOU = #{furyou},
+                LEAD2 = #{lead2},
+                TANIKOUKI = #{tanikouki},
+                KOUKI2 = #{kouki2},
+                LINKSLIP = #{linkslip},
+                NOKANRI = #{nokanri},
+                PICKKU = #{pickku},
+                PICKLOTS = #{picklots},
+                SPICKKU = #{spickku},
+                HCTENKANRI = #{hctenkanri},
+                CHANGEKAKU = #{changekaku},
+                MAXZAIK = #{maxzaik},
+                MINZAIK = #{minzaik},
+                STDCOUNT = #{stdcount},
+                EMACOUNT = #{emacount},
+                ZAIKMIN = #{zaikmin},
+                TEMPZAIKMIN = #{tempzaikmin},
+                MAXLOTH = #{maxloth},
+                MAXLOTS = #{maxlots},
+                LOTHT = #{lotht},
+                LOTKIKAN = #{lotkikan},
+                FLATJYUN = #{flatjyun},
+                STZAIKEND = #{stzaikend},
+                UCHIKIRI = #{uchikiri},
+                MATOMEH = #{matomeh},
+                CALEM = #{calem},
+                HIKIKU = #{hikiku},
+                HIKILOTS = #{hikilots},
+                MINASIKUBU = #{minasikubu},
+                MINASIGENDO = #{minasigendo},
+                COMPO = #{compo},
+                DOLOTBUNKATU = #{dolotbunkatu},
+                PCAPA = #{pcapa},
+                TANKAH = #{tankah},
+                SSUMPRICE = #{ssumprice},
+                STUMIPRICE = #{stumiprice},
+                PKET = #{pket},
+                GAKUJ = #{gakuj},
+                KANZANZ = #{kanzanz},
+                KANZANP = #{kanzanp},
+                KANZANZA = #{kanzanza},
+                KANZANJ = #{kanzanj},
+                KANZANV = #{kanzanv},
+                KANZANK = #{kanzank},
+                TANI2 = #{tani2},
+                DFAKU = #{dfaku},
+                DFAKU2 = #{dfaku2},
+                DFJKU = #{dfjku},
+                DFJKU2 = #{dfjku2},
+                KENSA = #{kensa},
+                KDESNAME = #{kdesname},
+                SLNOHD = #{slnohd},
+                SETGRP = #{setgrp},
+                SETGRPRATIO = #{setgrpratio},
+                KIGENKUBU = #{kigenkubu},
+                KIGEN = #{kigen},
+                ACTLIMIT = #{actlimit},
+                HIKILIMIT = #{hikilimit},
+                NOTE = #{note},
+                SYSNOTE = #{sysnote},
+                INPUTDATE = #{inputdate},
+                INPUTUSER = #{inputuser},
+        WHERE
+            CODE = #{code}
+        and
+            BUMO = #{bumo}
+        and
+    </update>
+
+    <delete id="deleteById">
+            delete from BASIC_XITEM
+            WHERE
+                    CODE = #{item.code}
+                    and
+                    BUMO = #{item.bumo}
+                    and
+    </delete>
+
+    <delete id="deleteBatchIds">
+        <foreach collection="list" item="item" open = "(" close = ")" separator=",">
+        delete from BASIC_XITEM
+            WHERE
+                 CODE = #{item.code}
+            and
+                 BUMO = #{item.bumo}
+            and
+        </foreach>
+    </delete>
+
+</mapper>

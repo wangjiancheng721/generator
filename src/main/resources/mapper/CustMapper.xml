@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wms.basic.mapper.CustMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.wms.basic.entity.Cust">
+        <id column="CUST" property="cust" />
+        <result column="SKYTERMSM" property="skytermsm" />
+        <result column="SKYTERMSD" property="skytermsd" />
+        <result column="TAXH" property="taxh" />
+        <result column="CNAME" property="cname" />
+        <result column="DESNAME" property="desname" />
+        <result column="DESNAMEGENP" property="desnamegenp" />
+        <result column="DESNAMESKYU" property="desnameskyu" />
+        <result column="CALEN" property="calen" />
+        <result column="YLEAD" property="ylead" />
+        <result column="DELNAIJIKIKAN" property="delnaijikikan" />
+        <result column="OVERTAKE" property="overtake" />
+        <result column="HASUUGAKU" property="hasuugaku" />
+        <result column="HASUUTAX" property="hasuutax" />
+        <result column="BUNRC" property="bunrc" />
+        <result column="BUSHO" property="busho" />
+        <result column="HITO" property="hito" />
+        <result column="TEL" property="tel" />
+        <result column="FAX" property="fax" />
+        <result column="SIME" property="sime" />
+        <result column="LASTSIMEDATE" property="lastsimedate" />
+        <result column="KAMOKU" property="kamoku" />
+        <result column="CURRE" property="curre" />
+        <result column="ZIP" property="zip" />
+        <result column="ADR1" property="adr1" />
+        <result column="ADR2" property="adr2" />
+        <result column="MAIL" property="mail" />
+        <result column="NOTE" property="note" />
+        <result column="SYSNOTE" property="sysnote" />
+        <result column="CUSTKU" property="custku" />
+        <result column="LINKCUST" property="linkcust" />
+        <result column="INPUTDATE" property="inputdate" />
+        <result column="INPUTUSER" property="inputuser" />
+    </resultMap>
+
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        CUST, SKYTERMSM, SKYTERMSD, TAXH, CNAME, DESNAME, DESNAMEGENP, DESNAMESKYU, CALEN, YLEAD, DELNAIJIKIKAN, OVERTAKE, HASUUGAKU, HASUUTAX, BUNRC, BUSHO, HITO, TEL, FAX, SIME, LASTSIMEDATE, KAMOKU, CURRE, ZIP, ADR1, ADR2, MAIL, NOTE, SYSNOTE, CUSTKU, LINKCUST, INPUTDATE, INPUTUSER
+    </sql>
+
+    <select id="getBASIC_XCUSTList" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM BASIC_XCUST
+    </select>
+
+    <select id="getBASIC_XCUSTById" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+          FROM BASIC_XCUST
+        WHERE
+            CUST = #{cust}
+        and
+    </select>
+
+    <insert id="insertInfos">
+        INSERT INTO BASIC_XCUST(CUST, SKYTERMSM, SKYTERMSD, TAXH, CNAME, DESNAME, DESNAMEGENP, DESNAMESKYU, CALEN, YLEAD, DELNAIJIKIKAN, OVERTAKE, HASUUGAKU, HASUUTAX, BUNRC, BUSHO, HITO, TEL, FAX, SIME, LASTSIMEDATE, KAMOKU, CURRE, ZIP, ADR1, ADR2, MAIL, NOTE, SYSNOTE, CUSTKU, LINKCUST, INPUTDATE, INPUTUSER)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+                #{item.cust},
+                #{item.skytermsm},
+                #{item.skytermsd},
+                #{item.taxh},
+                #{item.cname},
+                #{item.desname},
+                #{item.desnamegenp},
+                #{item.desnameskyu},
+                #{item.calen},
+                #{item.ylead},
+                #{item.delnaijikikan},
+                #{item.overtake},
+                #{item.hasuugaku},
+                #{item.hasuutax},
+                #{item.bunrc},
+                #{item.busho},
+                #{item.hito},
+                #{item.tel},
+                #{item.fax},
+                #{item.sime},
+                #{item.lastsimedate},
+                #{item.kamoku},
+                #{item.curre},
+                #{item.zip},
+                #{item.adr1},
+                #{item.adr2},
+                #{item.mail},
+                #{item.note},
+                #{item.sysnote},
+                #{item.custku},
+                #{item.linkcust},
+                #{item.inputdate},
+                #{item.inputuser},
+)
+        </foreach>
+    </insert>
+
+    <update id="updateById">
+        update BASIC_XCUST set
+                CUST = #{cust},
+                SKYTERMSM = #{skytermsm},
+                SKYTERMSD = #{skytermsd},
+                TAXH = #{taxh},
+                CNAME = #{cname},
+                DESNAME = #{desname},
+                DESNAMEGENP = #{desnamegenp},
+                DESNAMESKYU = #{desnameskyu},
+                CALEN = #{calen},
+                YLEAD = #{ylead},
+                DELNAIJIKIKAN = #{delnaijikikan},
+                OVERTAKE = #{overtake},
+                HASUUGAKU = #{hasuugaku},
+                HASUUTAX = #{hasuutax},
+                BUNRC = #{bunrc},
+                BUSHO = #{busho},
+                HITO = #{hito},
+                TEL = #{tel},
+                FAX = #{fax},
+                SIME = #{sime},
+                LASTSIMEDATE = #{lastsimedate},
+                KAMOKU = #{kamoku},
+                CURRE = #{curre},
+                ZIP = #{zip},
+                ADR1 = #{adr1},
+                ADR2 = #{adr2},
+                MAIL = #{mail},
+                NOTE = #{note},
+                SYSNOTE = #{sysnote},
+                CUSTKU = #{custku},
+                LINKCUST = #{linkcust},
+                INPUTDATE = #{inputdate},
+                INPUTUSER = #{inputuser},
+        WHERE
+            CUST = #{cust}
+        and
+    </update>
+
+    <delete id="deleteById">
+            delete from BASIC_XCUST
+            WHERE
+                    CUST = #{item.cust}
+                    and
+    </delete>
+
+    <delete id="deleteBatchIds">
+        <foreach collection="list" item="item" open = "(" close = ")" separator=",">
+        delete from BASIC_XCUST
+            WHERE
+                 CUST = #{item.cust}
+            and
+        </foreach>
+    </delete>
+
+</mapper>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wms.basic.mapper.HeadMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.wms.basic.entity.Head">
+        <id column="CODE" property="code" />
+        <result column="NAME" property="name" />
+        <result column="MAINBUMO" property="mainbumo" />
+        <result column="DOFUKUSUU" property="dofukusuu" />
+        <result column="DOSEIBAN" property="doseiban" />
+        <result column="SEIBHKU" property="seibhku" />
+        <result column="DORIREKIOYA" property="dorirekioya" />
+        <result column="DORIREKIKO" property="dorirekiko" />
+        <result column="DOLOT" property="dolot" />
+        <result column="PROJONLY" property="projonly" />
+        <result column="TANI1" property="tani1" />
+        <result column="OYAK" property="oyak" />
+        <result column="NOTE" property="note" />
+        <result column="SYSNOTE" property="sysnote" />
+        <result column="PLANTID" property="plantid" />
+        <result column="INPUTDATE" property="inputdate" />
+        <result column="INPUTUSER" property="inputuser" />
+    </resultMap>
+
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        CODE, NAME, MAINBUMO, DOFUKUSUU, DOSEIBAN, SEIBHKU, DORIREKIOYA, DORIREKIKO, DOLOT, PROJONLY, TANI1, OYAK, NOTE, SYSNOTE, PLANTID, INPUTDATE, INPUTUSER
+    </sql>
+
+    <select id="getBASIC_XHEADList" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM BASIC_XHEAD
+    </select>
+
+    <select id="getBASIC_XHEADById" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+          FROM BASIC_XHEAD
+        WHERE
+            CODE = #{code}
+        and
+    </select>
+
+    <insert id="insertInfos">
+        INSERT INTO BASIC_XHEAD(CODE, NAME, MAINBUMO, DOFUKUSUU, DOSEIBAN, SEIBHKU, DORIREKIOYA, DORIREKIKO, DOLOT, PROJONLY, TANI1, OYAK, NOTE, SYSNOTE, PLANTID, INPUTDATE, INPUTUSER)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+                #{item.code},
+                #{item.name},
+                #{item.mainbumo},
+                #{item.dofukusuu},
+                #{item.doseiban},
+                #{item.seibhku},
+                #{item.dorirekioya},
+                #{item.dorirekiko},
+                #{item.dolot},
+                #{item.projonly},
+                #{item.tani1},
+                #{item.oyak},
+                #{item.note},
+                #{item.sysnote},
+                #{item.plantid},
+                #{item.inputdate},
+                #{item.inputuser},
+)
+        </foreach>
+    </insert>
+
+    <update id="updateById">
+        update BASIC_XHEAD set
+                CODE = #{code},
+                NAME = #{name},
+                MAINBUMO = #{mainbumo},
+                DOFUKUSUU = #{dofukusuu},
+                DOSEIBAN = #{doseiban},
+                SEIBHKU = #{seibhku},
+                DORIREKIOYA = #{dorirekioya},
+                DORIREKIKO = #{dorirekiko},
+                DOLOT = #{dolot},
+                PROJONLY = #{projonly},
+                TANI1 = #{tani1},
+                OYAK = #{oyak},
+                NOTE = #{note},
+                SYSNOTE = #{sysnote},
+                PLANTID = #{plantid},
+                INPUTDATE = #{inputdate},
+                INPUTUSER = #{inputuser},
+        WHERE
+            CODE = #{code}
+        and
+    </update>
+
+    <delete id="deleteById">
+            delete from BASIC_XHEAD
+            WHERE
+                    CODE = #{item.code}
+                    and
+    </delete>
+
+    <delete id="deleteBatchIds">
+        <foreach collection="list" item="item" open = "(" close = ")" separator=",">
+        delete from BASIC_XHEAD
+            WHERE
+                 CODE = #{item.code}
+            and
+        </foreach>
+    </delete>
+
+</mapper>

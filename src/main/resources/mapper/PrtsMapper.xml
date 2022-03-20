@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wms.basic.mapper.PrtsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.wms.basic.entity.Prts">
+        <id column="CODE" property="code" />
+        <id column="KCODE" property="kcode" />
+        <id column="KEDA" property="keda" />
+        <id column="BUMO" property="bumo" />
+        <result column="REV" property="rev" />
+        <result column="CHGGRP" property="chggrp" />
+        <result column="OPT" property="opt" />
+        <result column="SIYOU" property="siyou" />
+        <result column="SIYOUW" property="siyouw" />
+        <result column="SIYOUF" property="siyouf" />
+        <result column="FURYOU" property="furyou" />
+        <result column="SDATE" property="sdate" />
+        <result column="EDATE" property="edate" />
+        <result column="NOKANRI" property="nokanri" />
+        <result column="NOTE" property="note" />
+        <result column="SYSNOTE" property="sysnote" />
+        <result column="INPUTDATE" property="inputdate" />
+        <result column="INPUTUSER" property="inputuser" />
+    </resultMap>
+
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        CODE, REV, CHGGRP, KCODE, KEDA, BUMO, OPT, SIYOU, SIYOUW, SIYOUF, FURYOU, SDATE, EDATE, NOKANRI, NOTE, SYSNOTE, INPUTDATE, INPUTUSER
+    </sql>
+
+    <select id="getBASIC_XPRTSList" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM BASIC_XPRTS
+    </select>
+
+    <select id="getBASIC_XPRTSById" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+          FROM BASIC_XPRTS
+        WHERE
+            CODE = #{code}
+        and
+            KCODE = #{kcode}
+        and
+            KEDA = #{keda}
+        and
+            BUMO = #{bumo}
+        and
+    </select>
+
+    <insert id="insertInfos">
+        INSERT INTO BASIC_XPRTS(CODE, REV, CHGGRP, KCODE, KEDA, BUMO, OPT, SIYOU, SIYOUW, SIYOUF, FURYOU, SDATE, EDATE, NOKANRI, NOTE, SYSNOTE, INPUTDATE, INPUTUSER)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+                #{item.code},
+                #{item.rev},
+                #{item.chggrp},
+                #{item.kcode},
+                #{item.keda},
+                #{item.bumo},
+                #{item.opt},
+                #{item.siyou},
+                #{item.siyouw},
+                #{item.siyouf},
+                #{item.furyou},
+                #{item.sdate},
+                #{item.edate},
+                #{item.nokanri},
+                #{item.note},
+                #{item.sysnote},
+                #{item.inputdate},
+                #{item.inputuser},
+)
+        </foreach>
+    </insert>
+
+    <update id="updateById">
+        update BASIC_XPRTS set
+                CODE = #{code},
+                REV = #{rev},
+                CHGGRP = #{chggrp},
+                KCODE = #{kcode},
+                KEDA = #{keda},
+                BUMO = #{bumo},
+                OPT = #{opt},
+                SIYOU = #{siyou},
+                SIYOUW = #{siyouw},
+                SIYOUF = #{siyouf},
+                FURYOU = #{furyou},
+                SDATE = #{sdate},
+                EDATE = #{edate},
+                NOKANRI = #{nokanri},
+                NOTE = #{note},
+                SYSNOTE = #{sysnote},
+                INPUTDATE = #{inputdate},
+                INPUTUSER = #{inputuser},
+        WHERE
+            CODE = #{code}
+        and
+            KCODE = #{kcode}
+        and
+            KEDA = #{keda}
+        and
+            BUMO = #{bumo}
+        and
+    </update>
+
+    <delete id="deleteById">
+            delete from BASIC_XPRTS
+            WHERE
+                    CODE = #{item.code}
+                    and
+                    KCODE = #{item.kcode}
+                    and
+                    KEDA = #{item.keda}
+                    and
+                    BUMO = #{item.bumo}
+                    and
+    </delete>
+
+    <delete id="deleteBatchIds">
+        <foreach collection="list" item="item" open = "(" close = ")" separator=",">
+        delete from BASIC_XPRTS
+            WHERE
+                 CODE = #{item.code}
+            and
+                 KCODE = #{item.kcode}
+            and
+                 KEDA = #{item.keda}
+            and
+                 BUMO = #{item.bumo}
+            and
+        </foreach>
+    </delete>
+
+</mapper>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wms.basic.mapper.CurrMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.wms.basic.entity.Curr">
+        <id column="CURRE" property="curre" />
+        <id column="TDATE" property="tdate" />
+        <result column="CRATES" property="crates" />
+        <result column="CRATEF" property="cratef" />
+        <result column="COPE" property="cope" />
+        <result column="CPOINTT" property="cpointt" />
+        <result column="CPOINTG" property="cpointg" />
+        <result column="NOTE" property="note" />
+        <result column="SYSNOTE" property="sysnote" />
+        <result column="INPUTDATE" property="inputdate" />
+        <result column="INPUTUSER" property="inputuser" />
+    </resultMap>
+
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        CURRE, TDATE, CRATES, CRATEF, COPE, CPOINTT, CPOINTG, NOTE, SYSNOTE, INPUTDATE, INPUTUSER
+    </sql>
+
+    <select id="getBASIC_XCURRList" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM BASIC_XCURR
+    </select>
+
+    <select id="getBASIC_XCURRById" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+          FROM BASIC_XCURR
+        WHERE
+            CURRE = #{curre}
+        and
+            TDATE = #{tdate}
+        and
+    </select>
+
+    <insert id="insertInfos">
+        INSERT INTO BASIC_XCURR(CURRE, TDATE, CRATES, CRATEF, COPE, CPOINTT, CPOINTG, NOTE, SYSNOTE, INPUTDATE, INPUTUSER)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+                #{item.curre},
+                #{item.tdate},
+                #{item.crates},
+                #{item.cratef},
+                #{item.cope},
+                #{item.cpointt},
+                #{item.cpointg},
+                #{item.note},
+                #{item.sysnote},
+                #{item.inputdate},
+                #{item.inputuser},
+)
+        </foreach>
+    </insert>
+
+    <update id="updateById">
+        update BASIC_XCURR set
+                CURRE = #{curre},
+                TDATE = #{tdate},
+                CRATES = #{crates},
+                CRATEF = #{cratef},
+                COPE = #{cope},
+                CPOINTT = #{cpointt},
+                CPOINTG = #{cpointg},
+                NOTE = #{note},
+                SYSNOTE = #{sysnote},
+                INPUTDATE = #{inputdate},
+                INPUTUSER = #{inputuser},
+        WHERE
+            CURRE = #{curre}
+        and
+            TDATE = #{tdate}
+        and
+    </update>
+
+    <delete id="deleteById">
+            delete from BASIC_XCURR
+            WHERE
+                    CURRE = #{item.curre}
+                    and
+                    TDATE = #{item.tdate}
+                    and
+    </delete>
+
+    <delete id="deleteBatchIds">
+        <foreach collection="list" item="item" open = "(" close = ")" separator=",">
+        delete from BASIC_XCURR
+            WHERE
+                 CURRE = #{item.curre}
+            and
+                 TDATE = #{item.tdate}
+            and
+        </foreach>
+    </delete>
+
+</mapper>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wms.basic.mapper.TankMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.wms.basic.entity.Tank">
+        <id column="TID" property="tid" />
+        <result column="CODE" property="code" />
+        <result column="VCODE" property="vcode" />
+        <result column="VENDOR" property="vendor" />
+        <result column="WCODE" property="wcode" />
+        <result column="MAKERNAME" property="makername" />
+        <result column="TDATE" property="tdate" />
+        <result column="EDATE" property="edate" />
+        <result column="TVOL" property="tvol" />
+        <result column="TEMA" property="tema" />
+        <result column="SPRICE" property="sprice" />
+        <result column="PRICE" property="price" />
+        <result column="TAXRATE" property="taxrate" />
+        <result column="TAXKUBU" property="taxkubu" />
+        <result column="SOUKINGAKU" property="soukingaku" />
+        <result column="SOUSUUIN" property="sousuuin" />
+        <result column="APRICE" property="aprice" />
+        <result column="HOKAN" property="hokan" />
+        <result column="NOTE" property="note" />
+        <result column="SYSNOTE" property="sysnote" />
+        <result column="INPUTDATE" property="inputdate" />
+        <result column="INPUTUSER" property="inputuser" />
+    </resultMap>
+
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        TID, CODE, VCODE, VENDOR, WCODE, MAKERNAME, TDATE, EDATE, TVOL, TEMA, SPRICE, PRICE, TAXRATE, TAXKUBU, SOUKINGAKU, SOUSUUIN, APRICE, HOKAN, NOTE, SYSNOTE, INPUTDATE, INPUTUSER
+    </sql>
+
+    <select id="getBASIC_XTANKList" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM BASIC_XTANK
+    </select>
+
+    <select id="getBASIC_XTANKById" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+          FROM BASIC_XTANK
+        WHERE
+            TID = #{tid}
+        and
+    </select>
+
+    <insert id="insertInfos">
+        INSERT INTO BASIC_XTANK(TID, CODE, VCODE, VENDOR, WCODE, MAKERNAME, TDATE, EDATE, TVOL, TEMA, SPRICE, PRICE, TAXRATE, TAXKUBU, SOUKINGAKU, SOUSUUIN, APRICE, HOKAN, NOTE, SYSNOTE, INPUTDATE, INPUTUSER)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+                #{item.tid},
+                #{item.code},
+                #{item.vcode},
+                #{item.vendor},
+                #{item.wcode},
+                #{item.makername},
+                #{item.tdate},
+                #{item.edate},
+                #{item.tvol},
+                #{item.tema},
+                #{item.sprice},
+                #{item.price},
+                #{item.taxrate},
+                #{item.taxkubu},
+                #{item.soukingaku},
+                #{item.sousuuin},
+                #{item.aprice},
+                #{item.hokan},
+                #{item.note},
+                #{item.sysnote},
+                #{item.inputdate},
+                #{item.inputuser},
+)
+        </foreach>
+    </insert>
+
+    <update id="updateById">
+        update BASIC_XTANK set
+                TID = #{tid},
+                CODE = #{code},
+                VCODE = #{vcode},
+                VENDOR = #{vendor},
+                WCODE = #{wcode},
+                MAKERNAME = #{makername},
+                TDATE = #{tdate},
+                EDATE = #{edate},
+                TVOL = #{tvol},
+                TEMA = #{tema},
+                SPRICE = #{sprice},
+                PRICE = #{price},
+                TAXRATE = #{taxrate},
+                TAXKUBU = #{taxkubu},
+                SOUKINGAKU = #{soukingaku},
+                SOUSUUIN = #{sousuuin},
+                APRICE = #{aprice},
+                HOKAN = #{hokan},
+                NOTE = #{note},
+                SYSNOTE = #{sysnote},
+                INPUTDATE = #{inputdate},
+                INPUTUSER = #{inputuser},
+        WHERE
+            TID = #{tid}
+        and
+    </update>
+
+    <delete id="deleteById">
+            delete from BASIC_XTANK
+            WHERE
+                    TID = #{item.tid}
+                    and
+    </delete>
+
+    <delete id="deleteBatchIds">
+        <foreach collection="list" item="item" open = "(" close = ")" separator=",">
+        delete from BASIC_XTANK
+            WHERE
+                 TID = #{item.tid}
+            and
+        </foreach>
+    </delete>
+
+</mapper>

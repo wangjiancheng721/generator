@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wms.basic.mapper.SectMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.wms.basic.entity.Sect">
+        <id column="BUMO" property="bumo" />
+        <result column="BNAME" property="bname" />
+        <result column="DESNAME" property="desname" />
+        <result column="DESNAMEGENP" property="desnamegenp" />
+        <result column="GKU" property="gku" />
+        <result column="CALEN" property="calen" />
+        <result column="CALEPOWERN" property="calepowern" />
+        <result column="SORTORDER" property="sortorder" />
+        <result column="BUNRS" property="bunrs" />
+        <result column="BUSHO" property="busho" />
+        <result column="POWER" property="power" />
+        <result column="RATE" property="rate" />
+        <result column="ARATE" property="arate" />
+        <result column="YRATE" property="yrate" />
+        <result column="DOFLAT" property="doflat" />
+        <result column="BFNORMA" property="bfnorma" />
+        <result column="TOUJITU" property="toujitu" />
+        <result column="NORMA" property="norma" />
+        <result column="COUNTORDER" property="countorder" />
+        <result column="COUNTOKURE" property="countokure" />
+        <result column="COUNTSUSUMI" property="countsusumi" />
+        <result column="WEB" property="web" />
+        <result column="NOANSTERM" property="noansterm" />
+        <result column="MAILTERM" property="mailterm" />
+        <result column="DENPPATTERN" property="denppattern" />
+        <result column="TANKSEARCHKU" property="tanksearchku" />
+        <result column="HASUUGAKU" property="hasuugaku" />
+        <result column="HASUUTAX" property="hasuutax" />
+        <result column="LASTSIMEDATE" property="lastsimedate" />
+        <result column="HITO" property="hito" />
+        <result column="TEL" property="tel" />
+        <result column="FAX" property="fax" />
+        <result column="SIME" property="sime" />
+        <result column="KAMOKU" property="kamoku" />
+        <result column="CURRE" property="curre" />
+        <result column="ZIP" property="zip" />
+        <result column="ADR1" property="adr1" />
+        <result column="ADR2" property="adr2" />
+        <result column="MAIL" property="mail" />
+        <result column="PAYEECODE" property="payeecode" />
+        <result column="NOTE" property="note" />
+        <result column="SYSNOTE" property="sysnote" />
+        <result column="SECTKU" property="sectku" />
+        <result column="INPUTDATE" property="inputdate" />
+        <result column="INPUTUSER" property="inputuser" />
+    </resultMap>
+
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        BUMO, BNAME, DESNAME, DESNAMEGENP, GKU, CALEN, CALEPOWERN, SORTORDER, BUNRS, BUSHO, POWER, RATE, ARATE, YRATE, DOFLAT, BFNORMA, TOUJITU, NORMA, COUNTORDER, COUNTOKURE, COUNTSUSUMI, WEB, NOANSTERM, MAILTERM, DENPPATTERN, TANKSEARCHKU, HASUUGAKU, HASUUTAX, LASTSIMEDATE, HITO, TEL, FAX, SIME, KAMOKU, CURRE, ZIP, ADR1, ADR2, MAIL, PAYEECODE, NOTE, SYSNOTE, SECTKU, INPUTDATE, INPUTUSER
+    </sql>
+
+    <select id="getBASIC_XSECTList" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM BASIC_XSECT
+    </select>
+
+    <select id="getBASIC_XSECTById" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+          FROM BASIC_XSECT
+        WHERE
+            BUMO = #{bumo}
+        and
+    </select>
+
+    <insert id="insertInfos">
+        INSERT INTO BASIC_XSECT(BUMO, BNAME, DESNAME, DESNAMEGENP, GKU, CALEN, CALEPOWERN, SORTORDER, BUNRS, BUSHO, POWER, RATE, ARATE, YRATE, DOFLAT, BFNORMA, TOUJITU, NORMA, COUNTORDER, COUNTOKURE, COUNTSUSUMI, WEB, NOANSTERM, MAILTERM, DENPPATTERN, TANKSEARCHKU, HASUUGAKU, HASUUTAX, LASTSIMEDATE, HITO, TEL, FAX, SIME, KAMOKU, CURRE, ZIP, ADR1, ADR2, MAIL, PAYEECODE, NOTE, SYSNOTE, SECTKU, INPUTDATE, INPUTUSER)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+                #{item.bumo},
+                #{item.bname},
+                #{item.desname},
+                #{item.desnamegenp},
+                #{item.gku},
+                #{item.calen},
+                #{item.calepowern},
+                #{item.sortorder},
+                #{item.bunrs},
+                #{item.busho},
+                #{item.power},
+                #{item.rate},
+                #{item.arate},
+                #{item.yrate},
+                #{item.doflat},
+                #{item.bfnorma},
+                #{item.toujitu},
+                #{item.norma},
+                #{item.countorder},
+                #{item.countokure},
+                #{item.countsusumi},
+                #{item.web},
+                #{item.noansterm},
+                #{item.mailterm},
+                #{item.denppattern},
+                #{item.tanksearchku},
+                #{item.hasuugaku},
+                #{item.hasuutax},
+                #{item.lastsimedate},
+                #{item.hito},
+                #{item.tel},
+                #{item.fax},
+                #{item.sime},
+                #{item.kamoku},
+                #{item.curre},
+                #{item.zip},
+                #{item.adr1},
+                #{item.adr2},
+                #{item.mail},
+                #{item.payeecode},
+                #{item.note},
+                #{item.sysnote},
+                #{item.sectku},
+                #{item.inputdate},
+                #{item.inputuser},
+)
+        </foreach>
+    </insert>
+
+    <update id="updateById">
+        update BASIC_XSECT set
+                BUMO = #{bumo},
+                BNAME = #{bname},
+                DESNAME = #{desname},
+                DESNAMEGENP = #{desnamegenp},
+                GKU = #{gku},
+                CALEN = #{calen},
+                CALEPOWERN = #{calepowern},
+                SORTORDER = #{sortorder},
+                BUNRS = #{bunrs},
+                BUSHO = #{busho},
+                POWER = #{power},
+                RATE = #{rate},
+                ARATE = #{arate},
+                YRATE = #{yrate},
+                DOFLAT = #{doflat},
+                BFNORMA = #{bfnorma},
+                TOUJITU = #{toujitu},
+                NORMA = #{norma},
+                COUNTORDER = #{countorder},
+                COUNTOKURE = #{countokure},
+                COUNTSUSUMI = #{countsusumi},
+                WEB = #{web},
+                NOANSTERM = #{noansterm},
+                MAILTERM = #{mailterm},
+                DENPPATTERN = #{denppattern},
+                TANKSEARCHKU = #{tanksearchku},
+                HASUUGAKU = #{hasuugaku},
+                HASUUTAX = #{hasuutax},
+                LASTSIMEDATE = #{lastsimedate},
+                HITO = #{hito},
+                TEL = #{tel},
+                FAX = #{fax},
+                SIME = #{sime},
+                KAMOKU = #{kamoku},
+                CURRE = #{curre},
+                ZIP = #{zip},
+                ADR1 = #{adr1},
+                ADR2 = #{adr2},
+                MAIL = #{mail},
+                PAYEECODE = #{payeecode},
+                NOTE = #{note},
+                SYSNOTE = #{sysnote},
+                SECTKU = #{sectku},
+                INPUTDATE = #{inputdate},
+                INPUTUSER = #{inputuser},
+        WHERE
+            BUMO = #{bumo}
+        and
+    </update>
+
+    <delete id="deleteById">
+            delete from BASIC_XSECT
+            WHERE
+                    BUMO = #{item.bumo}
+                    and
+    </delete>
+
+    <delete id="deleteBatchIds">
+        <foreach collection="list" item="item" open = "(" close = ")" separator=",">
+        delete from BASIC_XSECT
+            WHERE
+                 BUMO = #{item.bumo}
+            and
+        </foreach>
+    </delete>
+
+</mapper>
