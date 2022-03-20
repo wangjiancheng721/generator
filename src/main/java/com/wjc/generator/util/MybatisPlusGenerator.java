@@ -12,13 +12,13 @@ public class MybatisPlusGenerator {
 
         List<String> tables = new ArrayList<>();
         tables.add("BASIC_XCURR");
-        tables.add("BASIC_XBAIK");
-        tables.add("BASIC_XCUST");
-        tables.add("BASIC_XHEAD");
-        tables.add("BASIC_XITEM");
-        tables.add("BASIC_XPRTS");
-        tables.add("BASIC_XSECT");
-        tables.add("BASIC_XTANK");
+//        tables.add("BASIC_XBAIK");
+//        tables.add("BASIC_XCUST");
+//        tables.add("BASIC_XHEAD");
+//        tables.add("BASIC_XITEM");
+//        tables.add("BASIC_XPRTS");
+//        tables.add("BASIC_XSECT");
+//        tables.add("BASIC_XTANK");
 
         FastAutoGenerator.create("jdbc:sqlserver://localhost:1433;databaseName=BNWMS", "sa", "123")
                 .globalConfig(builder -> {
@@ -41,6 +41,14 @@ public class MybatisPlusGenerator {
                     builder.addInclude(tables).addTablePrefix("BASIC_X"); //添加表，过滤表名前缀
                 })
                 //.templateEngine(new FreemarkerTemplateEngine()) // 使用Freemarker引擎模板，默认的是Velocity引擎模板
+                .templateConfig(builder -> {
+                    builder.controller("\\templates\\controller.java.vm")
+                            .service("\\templates\\service.java.vm")
+                            .serviceImpl("\\templates\\serviceImpl.java.vm")
+                            .mapper("\\templates\\mapper.java.vm")
+                            .entity("\\templates\\entity.java.vm")
+                            .mapperXml("\\templates\\mapper.xml.vm");
+                })
                 .execute();
     }
 }
