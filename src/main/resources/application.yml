@@ -1,21 +1,16 @@
-#spring:
-#  datasource:
-#    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-#    url: jdbc:sqlserver://120.77.77.125:31433;databaseName=carmate
-#    username: sa
-#    password: hblh77126A
+spring:
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://120.77.77.125:31433;databaseName=carmate
+    username: sa
+    password: hblh77126A
 #spring:
 #  datasource:
 #    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
 #    url: jdbc:sqlserver://localhost:1433;databaseName=BNWMS
 #    username: sa
 #    password: 123456
-spring:
-  datasource:
-    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://192.168.0.110:1433;databaseName=BNWMS
-    username: sa
-    password: 123
+
 
 #MyBatis Plus
 mybatis-plus:

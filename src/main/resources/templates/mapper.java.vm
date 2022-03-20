@@ -2,6 +2,7 @@ package ${package.Mapper};
 
 import ${package.Entity}.${entity};
 import ${superMapperClassPackage};
+import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -15,4 +16,16 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface ${table.mapperName} extends ${superMapperClass}<${entity}> {
 
+    /**
+     * 分页查询
+     * @return  Page<${table.entityName}>
+     */
+    List<${entity}> get${table.entityName}List(${entity} ${table.entityName.toLowerCase()});
+
+    /**
+     * 根据${table.entityName}的id获取当前对象
+     * @param ${table.entityName.toLowerCase()}
+     * @return ${table.entityName}
+     */
+    ${entity} get${table.entityName}ById(${entity} ${table.entityName.toLowerCase()});
 }

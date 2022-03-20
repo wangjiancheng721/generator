@@ -26,7 +26,7 @@
     </resultMap>
 
 #end
-#if(${baseColumnList})
+
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
 #foreach($field in ${table.commonFields})
@@ -35,5 +35,70 @@
         ${table.fieldNames}
     </sql>
 
+    <select id="get${table.name}List" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM ${table.name}
+    </select>
+
+    <select id="get${table.name}ById" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+          FROM ${table.name}
+        WHERE
+#foreach($field in ${table.fields})
+    #if(${field.keyFlag})
+            ${field.name} = #{${field.propertyName}}
+        and
+    #end
 #end
+    </select>
+
+    <insert id="insertInfos">
+        INSERT INTO ${table.name}(${table.fieldNames})
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #foreach($field in ${table.fields})
+                #{item.${field.propertyName}},
+            #end)
+        </foreach>
+    </insert>
+
+    <update id="updateById">
+        update ${table.name} set
+            #foreach($field in ${table.fields})
+                ${field.name} = #{${field.propertyName}},
+            #end
+        WHERE
+#foreach($field in ${table.fields})
+    #if(${field.keyFlag})
+            ${field.name} = #{${field.propertyName}}
+        and
+    #end
+#end
+    </update>
+
+    <delete id="deleteById">
+            delete from ${table.name}
+            WHERE
+            #foreach($field in ${table.fields})
+                #if(${field.keyFlag})
+                    ${field.name} = #{item.${field.propertyName}}
+                    and
+                #end
+            #end
+    </delete>
+
+    <delete id="deleteBatchIds">
+        <foreach collection="list" item="item" open = "(" close = ")" separator=",">
+        delete from ${table.name}
+            WHERE
+    #foreach($field in ${table.fields})
+        #if(${field.keyFlag})
+                 ${field.name} = #{item.${field.propertyName}}
+            and
+        #end
+    #end
+        </foreach>
+    </delete>
+
 </mapper>

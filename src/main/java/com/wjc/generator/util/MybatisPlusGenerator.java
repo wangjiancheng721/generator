@@ -12,15 +12,15 @@ public class MybatisPlusGenerator {
 
         List<String> tables = new ArrayList<>();
         tables.add("BASIC_XCURR");
-//        tables.add("BASIC_XBAIK");
-//        tables.add("BASIC_XCUST");
-//        tables.add("BASIC_XHEAD");
-//        tables.add("BASIC_XITEM");
-//        tables.add("BASIC_XPRTS");
-//        tables.add("BASIC_XSECT");
-//        tables.add("BASIC_XTANK");
+        tables.add("BASIC_XBAIK");
+        tables.add("BASIC_XCUST");
+        tables.add("BASIC_XHEAD");
+        tables.add("BASIC_XITEM");
+        tables.add("BASIC_XPRTS");
+        tables.add("BASIC_XSECT");
+        tables.add("BASIC_XTANK");
 
-        FastAutoGenerator.create("jdbc:sqlserver://localhost:1433;databaseName=BNWMS", "sa", "123")
+        FastAutoGenerator.create("jdbc:sqlserver://localhost:1433;databaseName=BNWMS", "sa", "123456")
                 .globalConfig(builder -> {
                     builder.author("wjc")               //作者
                             .outputDir(System.getProperty("user.dir")+"\\src\\main\\java")    //输出路径(写到java目录)
