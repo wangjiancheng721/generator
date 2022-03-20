@@ -44,7 +44,6 @@
           FROM BASIC_XTANK
         WHERE
             TID = #{tid}
-        and
     </select>
 
     <insert id="insertInfos">
@@ -73,8 +72,8 @@
                 #{item.note},
                 #{item.sysnote},
                 #{item.inputdate},
-                #{item.inputuser},
-)
+                #{item.inputuser}
+            )
         </foreach>
     </insert>
 
@@ -101,17 +100,15 @@
                 NOTE = #{note},
                 SYSNOTE = #{sysnote},
                 INPUTDATE = #{inputdate},
-                INPUTUSER = #{inputuser},
+                INPUTUSER = #{inputuser}
         WHERE
             TID = #{tid}
-        and
     </update>
 
     <delete id="deleteById">
-            delete from BASIC_XTANK
+        delete from BASIC_XTANK
             WHERE
-                    TID = #{item.tid}
-                    and
+                TID = #{item.tid}
     </delete>
 
     <delete id="deleteBatchIds">
@@ -119,7 +116,6 @@
         delete from BASIC_XTANK
             WHERE
                  TID = #{item.tid}
-            and
         </foreach>
     </delete>
 

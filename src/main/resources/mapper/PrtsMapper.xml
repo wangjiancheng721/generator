@@ -46,7 +46,6 @@
             KEDA = #{keda}
         and
             BUMO = #{bumo}
-        and
     </select>
 
     <insert id="insertInfos">
@@ -71,8 +70,8 @@
                 #{item.note},
                 #{item.sysnote},
                 #{item.inputdate},
-                #{item.inputuser},
-)
+                #{item.inputuser}
+            )
         </foreach>
     </insert>
 
@@ -95,7 +94,7 @@
                 NOTE = #{note},
                 SYSNOTE = #{sysnote},
                 INPUTDATE = #{inputdate},
-                INPUTUSER = #{inputuser},
+                INPUTUSER = #{inputuser}
         WHERE
             CODE = #{code}
         and
@@ -104,20 +103,18 @@
             KEDA = #{keda}
         and
             BUMO = #{bumo}
-        and
     </update>
 
     <delete id="deleteById">
-            delete from BASIC_XPRTS
+        delete from BASIC_XPRTS
             WHERE
-                    CODE = #{item.code}
-                    and
-                    KCODE = #{item.kcode}
-                    and
-                    KEDA = #{item.keda}
-                    and
-                    BUMO = #{item.bumo}
-                    and
+                CODE = #{item.code}
+            and
+                KCODE = #{item.kcode}
+            and
+                KEDA = #{item.keda}
+            and
+                BUMO = #{item.bumo}
     </delete>
 
     <delete id="deleteBatchIds">
@@ -131,7 +128,6 @@
                  KEDA = #{item.keda}
             and
                  BUMO = #{item.bumo}
-            and
         </foreach>
     </delete>
 

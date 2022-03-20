@@ -39,7 +39,6 @@
           FROM BASIC_XHEAD
         WHERE
             CODE = #{code}
-        and
     </select>
 
     <insert id="insertInfos">
@@ -63,8 +62,8 @@
                 #{item.sysnote},
                 #{item.plantid},
                 #{item.inputdate},
-                #{item.inputuser},
-)
+                #{item.inputuser}
+            )
         </foreach>
     </insert>
 
@@ -86,17 +85,15 @@
                 SYSNOTE = #{sysnote},
                 PLANTID = #{plantid},
                 INPUTDATE = #{inputdate},
-                INPUTUSER = #{inputuser},
+                INPUTUSER = #{inputuser}
         WHERE
             CODE = #{code}
-        and
     </update>
 
     <delete id="deleteById">
-            delete from BASIC_XHEAD
+        delete from BASIC_XHEAD
             WHERE
-                    CODE = #{item.code}
-                    and
+                CODE = #{item.code}
     </delete>
 
     <delete id="deleteBatchIds">
@@ -104,7 +101,6 @@
         delete from BASIC_XHEAD
             WHERE
                  CODE = #{item.code}
-            and
         </foreach>
     </delete>
 

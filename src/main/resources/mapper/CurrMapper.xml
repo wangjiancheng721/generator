@@ -35,7 +35,6 @@
             CURRE = #{curre}
         and
             TDATE = #{tdate}
-        and
     </select>
 
     <insert id="insertInfos">
@@ -53,8 +52,8 @@
                 #{item.note},
                 #{item.sysnote},
                 #{item.inputdate},
-                #{item.inputuser},
-)
+                #{item.inputuser}
+            )
         </foreach>
     </insert>
 
@@ -70,21 +69,19 @@
                 NOTE = #{note},
                 SYSNOTE = #{sysnote},
                 INPUTDATE = #{inputdate},
-                INPUTUSER = #{inputuser},
+                INPUTUSER = #{inputuser}
         WHERE
             CURRE = #{curre}
         and
             TDATE = #{tdate}
-        and
     </update>
 
     <delete id="deleteById">
-            delete from BASIC_XCURR
+        delete from BASIC_XCURR
             WHERE
-                    CURRE = #{item.curre}
-                    and
-                    TDATE = #{item.tdate}
-                    and
+                CURRE = #{item.curre}
+            and
+                TDATE = #{item.tdate}
     </delete>
 
     <delete id="deleteBatchIds">
@@ -94,7 +91,6 @@
                  CURRE = #{item.curre}
             and
                  TDATE = #{item.tdate}
-            and
         </foreach>
     </delete>
 

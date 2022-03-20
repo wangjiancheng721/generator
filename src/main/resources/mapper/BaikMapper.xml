@@ -41,7 +41,6 @@
           FROM BASIC_XBAIK
         WHERE
             BID = #{bid}
-        and
     </select>
 
     <insert id="insertInfos">
@@ -67,8 +66,8 @@
                 #{item.note},
                 #{item.sysnote},
                 #{item.inputdate},
-                #{item.inputuser},
-)
+                #{item.inputuser}
+            )
         </foreach>
     </insert>
 
@@ -92,17 +91,15 @@
                 NOTE = #{note},
                 SYSNOTE = #{sysnote},
                 INPUTDATE = #{inputdate},
-                INPUTUSER = #{inputuser},
+                INPUTUSER = #{inputuser}
         WHERE
             BID = #{bid}
-        and
     </update>
 
     <delete id="deleteById">
-            delete from BASIC_XBAIK
+        delete from BASIC_XBAIK
             WHERE
-                    BID = #{item.bid}
-                    and
+                BID = #{item.bid}
     </delete>
 
     <delete id="deleteBatchIds">
@@ -110,7 +107,6 @@
         delete from BASIC_XBAIK
             WHERE
                  BID = #{item.bid}
-            and
         </foreach>
     </delete>
 

@@ -78,14 +78,14 @@
     </update>
 
     <delete id="deleteById">
-            delete from ${table.name}
+        delete from ${table.name}
             WHERE
-            #foreach($field in ${table.fields})
-                #if(${field.keyFlag})
-                    ${field.name} = #{item.${field.propertyName}}
-                    and
-                #end
+        #foreach($field in ${table.fields})
+            #if(${field.keyFlag})
+                ${field.name} = #{item.${field.propertyName}}
+            and
             #end
+        #end
     </delete>
 
     <delete id="deleteBatchIds">

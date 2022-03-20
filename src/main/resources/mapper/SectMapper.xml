@@ -67,7 +67,6 @@
           FROM BASIC_XSECT
         WHERE
             BUMO = #{bumo}
-        and
     </select>
 
     <insert id="insertInfos">
@@ -119,8 +118,8 @@
                 #{item.sysnote},
                 #{item.sectku},
                 #{item.inputdate},
-                #{item.inputuser},
-)
+                #{item.inputuser}
+            )
         </foreach>
     </insert>
 
@@ -170,17 +169,15 @@
                 SYSNOTE = #{sysnote},
                 SECTKU = #{sectku},
                 INPUTDATE = #{inputdate},
-                INPUTUSER = #{inputuser},
+                INPUTUSER = #{inputuser}
         WHERE
             BUMO = #{bumo}
-        and
     </update>
 
     <delete id="deleteById">
-            delete from BASIC_XSECT
+        delete from BASIC_XSECT
             WHERE
-                    BUMO = #{item.bumo}
-                    and
+                BUMO = #{item.bumo}
     </delete>
 
     <delete id="deleteBatchIds">
@@ -188,7 +185,6 @@
         delete from BASIC_XSECT
             WHERE
                  BUMO = #{item.bumo}
-            and
         </foreach>
     </delete>
 

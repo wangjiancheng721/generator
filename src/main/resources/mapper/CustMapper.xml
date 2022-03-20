@@ -55,7 +55,6 @@
           FROM BASIC_XCUST
         WHERE
             CUST = #{cust}
-        and
     </select>
 
     <insert id="insertInfos">
@@ -95,8 +94,8 @@
                 #{item.custku},
                 #{item.linkcust},
                 #{item.inputdate},
-                #{item.inputuser},
-)
+                #{item.inputuser}
+            )
         </foreach>
     </insert>
 
@@ -134,17 +133,16 @@
                 CUSTKU = #{custku},
                 LINKCUST = #{linkcust},
                 INPUTDATE = #{inputdate},
-                INPUTUSER = #{inputuser},
+                INPUTUSER = #{inputuser}
         WHERE
             CUST = #{cust}
         and
     </update>
 
     <delete id="deleteById">
-            delete from BASIC_XCUST
+        delete from BASIC_XCUST
             WHERE
-                    CUST = #{item.cust}
-                    and
+                CUST = #{item.cust}
     </delete>
 
     <delete id="deleteBatchIds">
@@ -152,7 +150,6 @@
         delete from BASIC_XCUST
             WHERE
                  CUST = #{item.cust}
-            and
         </foreach>
     </delete>
 

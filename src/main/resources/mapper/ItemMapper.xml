@@ -107,7 +107,6 @@
             CODE = #{code}
         and
             BUMO = #{bumo}
-        and
     </select>
 
     <insert id="insertInfos">
@@ -197,8 +196,8 @@
                 #{item.note},
                 #{item.sysnote},
                 #{item.inputdate},
-                #{item.inputuser},
-)
+                #{item.inputuser}
+            )
         </foreach>
     </insert>
 
@@ -286,21 +285,19 @@
                 NOTE = #{note},
                 SYSNOTE = #{sysnote},
                 INPUTDATE = #{inputdate},
-                INPUTUSER = #{inputuser},
+                INPUTUSER = #{inputuser}
         WHERE
             CODE = #{code}
         and
             BUMO = #{bumo}
-        and
     </update>
 
     <delete id="deleteById">
-            delete from BASIC_XITEM
+        delete from BASIC_XITEM
             WHERE
-                    CODE = #{item.code}
-                    and
-                    BUMO = #{item.bumo}
-                    and
+                CODE = #{item.code}
+            and
+                BUMO = #{item.bumo}
     </delete>
 
     <delete id="deleteBatchIds">
@@ -310,7 +307,6 @@
                  CODE = #{item.code}
             and
                  BUMO = #{item.bumo}
-            and
         </foreach>
     </delete>
 
