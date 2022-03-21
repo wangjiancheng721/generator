@@ -30,8 +30,8 @@ public class ${table.controllerName} {
     /**
     * 分页获取列表
     */
-    @GetMapping("/get${table.entityName}List(${entity}")
-    public Object get${table.entityName}List(${entity} ${table.entityName.toLowerCase()}) {
+    @PostMapping("/get${table.entityName}List")
+    public Object get${table.entityName}List(@RequestBody ${entity} ${table.entityName.toLowerCase()}) {
 ##        int pageNo = Integer.parseInt(req.getParameter("page"));
 ##        int pageSize = Integer.parseInt(req.getParameter("limit"));
         return ${table.entityName.toLowerCase()}Service.get${table.entityName}List(${table.entityName.toLowerCase()});
@@ -40,7 +40,7 @@ public class ${table.controllerName} {
     /**
     * 根据id获取信息
     */
-    @GetMapping("/get${table.entityName}ById")
+    @PostMapping("/get${table.entityName}ById")
     public ${table.entityName} get${table.entityName}ById(@RequestBody ${entity} ${table.entityName.toLowerCase()}) {
         return ${table.entityName.toLowerCase()}Service.get${table.entityName}ById(${table.entityName.toLowerCase()});
     }

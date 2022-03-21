@@ -15,7 +15,7 @@ import com.wms.basic.service.impl.CurrServiceImpl;
  * </p>
  *
  * @author wjc
- * @since 2022-03-20
+ * @since 2022-03-21
  */
 @RestController
 @RequestMapping("/curr")
@@ -27,15 +27,15 @@ public class CurrController {
     /**
     * 分页获取列表
     */
-    @GetMapping("/getCurrList(Curr")
-    public Object getCurrList(Curr curr) {
+    @PostMapping("/getCurrList")
+    public Object getCurrList(@RequestBody Curr curr) {
         return currService.getCurrList(curr);
     }
 
     /**
     * 根据id获取信息
     */
-    @GetMapping("/getCurrById")
+    @PostMapping("/getCurrById")
     public Curr getCurrById(@RequestBody Curr curr) {
         return currService.getCurrById(curr);
     }

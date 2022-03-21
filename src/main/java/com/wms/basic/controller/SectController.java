@@ -15,7 +15,7 @@ import com.wms.basic.service.impl.SectServiceImpl;
  * </p>
  *
  * @author wjc
- * @since 2022-03-20
+ * @since 2022-03-21
  */
 @RestController
 @RequestMapping("/sect")
@@ -27,15 +27,15 @@ public class SectController {
     /**
     * 分页获取列表
     */
-    @GetMapping("/getSectList(Sect")
-    public Object getSectList(Sect sect) {
+    @PostMapping("/getSectList")
+    public Object getSectList(@RequestBody Sect sect) {
         return sectService.getSectList(sect);
     }
 
     /**
     * 根据id获取信息
     */
-    @GetMapping("/getSectById")
+    @PostMapping("/getSectById")
     public Sect getSectById(@RequestBody Sect sect) {
         return sectService.getSectById(sect);
     }

@@ -15,7 +15,7 @@ import com.wms.basic.service.impl.HeadServiceImpl;
  * </p>
  *
  * @author wjc
- * @since 2022-03-20
+ * @since 2022-03-21
  */
 @RestController
 @RequestMapping("/head")
@@ -27,15 +27,15 @@ public class HeadController {
     /**
     * 分页获取列表
     */
-    @GetMapping("/getHeadList(Head")
-    public Object getHeadList(Head head) {
+    @PostMapping("/getHeadList")
+    public Object getHeadList(@RequestBody Head head) {
         return headService.getHeadList(head);
     }
 
     /**
     * 根据id获取信息
     */
-    @GetMapping("/getHeadById")
+    @PostMapping("/getHeadById")
     public Head getHeadById(@RequestBody Head head) {
         return headService.getHeadById(head);
     }

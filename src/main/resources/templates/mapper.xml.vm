@@ -35,12 +35,12 @@
         ${table.fieldNames}
     </sql>
 
-    <select id="get${table.name}List" resultMap="BaseResultMap">
+    <select id="get${entity}List" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
         FROM ${table.name}
     </select>
 
-    <select id="get${table.name}ById" resultMap="BaseResultMap">
+    <select id="get${entity}ById" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
           FROM ${table.name}
         WHERE

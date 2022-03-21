@@ -45,12 +45,12 @@
         CUST, SKYTERMSM, SKYTERMSD, TAXH, CNAME, DESNAME, DESNAMEGENP, DESNAMESKYU, CALEN, YLEAD, DELNAIJIKIKAN, OVERTAKE, HASUUGAKU, HASUUTAX, BUNRC, BUSHO, HITO, TEL, FAX, SIME, LASTSIMEDATE, KAMOKU, CURRE, ZIP, ADR1, ADR2, MAIL, NOTE, SYSNOTE, CUSTKU, LINKCUST, INPUTDATE, INPUTUSER
     </sql>
 
-    <select id="getBASIC_XCUSTList" resultMap="BaseResultMap">
+    <select id="getCustList" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
         FROM BASIC_XCUST
     </select>
 
-    <select id="getBASIC_XCUSTById" resultMap="BaseResultMap">
+    <select id="getCustById" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
           FROM BASIC_XCUST
         WHERE

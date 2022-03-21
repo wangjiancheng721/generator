@@ -31,12 +31,12 @@
         BID, CODE, CCODE, CUST, TDATE, EDATE, TVOL, PRICE, APRICE, TAXRATE, TAXKUBU, SOUSUUOUT, SOUOUTKINGAKU, FDATE, HOKAN, NOTE, SYSNOTE, INPUTDATE, INPUTUSER
     </sql>
 
-    <select id="getBASIC_XBAIKList" resultMap="BaseResultMap">
+    <select id="getBaikList" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
         FROM BASIC_XBAIK
     </select>
 
-    <select id="getBASIC_XBAIKById" resultMap="BaseResultMap">
+    <select id="getBaikById" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
           FROM BASIC_XBAIK
         WHERE

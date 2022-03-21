@@ -15,7 +15,7 @@ import com.wms.basic.service.impl.BaikServiceImpl;
  * </p>
  *
  * @author wjc
- * @since 2022-03-20
+ * @since 2022-03-21
  */
 @RestController
 @RequestMapping("/baik")
@@ -27,15 +27,15 @@ public class BaikController {
     /**
     * 分页获取列表
     */
-    @GetMapping("/getBaikList(Baik")
-    public Object getBaikList(Baik baik) {
+    @PostMapping("/getBaikList")
+    public Object getBaikList(@RequestBody Baik baik) {
         return baikService.getBaikList(baik);
     }
 
     /**
     * 根据id获取信息
     */
-    @GetMapping("/getBaikById")
+    @PostMapping("/getBaikById")
     public Baik getBaikById(@RequestBody Baik baik) {
         return baikService.getBaikById(baik);
     }

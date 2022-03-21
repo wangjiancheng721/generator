@@ -15,7 +15,7 @@ import com.wms.basic.service.impl.PrtsServiceImpl;
  * </p>
  *
  * @author wjc
- * @since 2022-03-20
+ * @since 2022-03-21
  */
 @RestController
 @RequestMapping("/prts")
@@ -27,15 +27,15 @@ public class PrtsController {
     /**
     * 分页获取列表
     */
-    @GetMapping("/getPrtsList(Prts")
-    public Object getPrtsList(Prts prts) {
+    @PostMapping("/getPrtsList")
+    public Object getPrtsList(@RequestBody Prts prts) {
         return prtsService.getPrtsList(prts);
     }
 
     /**
     * 根据id获取信息
     */
-    @GetMapping("/getPrtsById")
+    @PostMapping("/getPrtsById")
     public Prts getPrtsById(@RequestBody Prts prts) {
         return prtsService.getPrtsById(prts);
     }

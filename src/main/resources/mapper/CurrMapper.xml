@@ -23,12 +23,12 @@
         CURRE, TDATE, CRATES, CRATEF, COPE, CPOINTT, CPOINTG, NOTE, SYSNOTE, INPUTDATE, INPUTUSER
     </sql>
 
-    <select id="getBASIC_XCURRList" resultMap="BaseResultMap">
+    <select id="getCurrList" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
         FROM BASIC_XCURR
     </select>
 
-    <select id="getBASIC_XCURRById" resultMap="BaseResultMap">
+    <select id="getCurrById" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
           FROM BASIC_XCURR
         WHERE

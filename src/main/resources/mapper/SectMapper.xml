@@ -57,12 +57,12 @@
         BUMO, BNAME, DESNAME, DESNAMEGENP, GKU, CALEN, CALEPOWERN, SORTORDER, BUNRS, BUSHO, POWER, RATE, ARATE, YRATE, DOFLAT, BFNORMA, TOUJITU, NORMA, COUNTORDER, COUNTOKURE, COUNTSUSUMI, WEB, NOANSTERM, MAILTERM, DENPPATTERN, TANKSEARCHKU, HASUUGAKU, HASUUTAX, LASTSIMEDATE, HITO, TEL, FAX, SIME, KAMOKU, CURRE, ZIP, ADR1, ADR2, MAIL, PAYEECODE, NOTE, SYSNOTE, SECTKU, INPUTDATE, INPUTUSER
     </sql>
 
-    <select id="getBASIC_XSECTList" resultMap="BaseResultMap">
+    <select id="getSectList" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
         FROM BASIC_XSECT
     </select>
 
-    <select id="getBASIC_XSECTById" resultMap="BaseResultMap">
+    <select id="getSectById" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
           FROM BASIC_XSECT
         WHERE

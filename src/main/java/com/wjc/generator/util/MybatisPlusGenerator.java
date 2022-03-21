@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import com.baomidou.mybatisplus.generator.config.*;
+import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
 public class MybatisPlusGenerator {
     public static void main(String[] args) {
@@ -20,7 +21,7 @@ public class MybatisPlusGenerator {
         tables.add("BASIC_XSECT");
         tables.add("BASIC_XTANK");
 
-        FastAutoGenerator.create("jdbc:sqlserver://localhost:1433;databaseName=BNWMS", "sa", "123456")
+        FastAutoGenerator.create("jdbc:sqlserver://localhost:1433;databaseName=BNWMS", "sa", "123")
                 .globalConfig(builder -> {
                     builder.author("wjc")               //作者
                             .outputDir(System.getProperty("user.dir")+"\\src\\main\\java")    //输出路径(写到java目录)
@@ -40,14 +41,14 @@ public class MybatisPlusGenerator {
                     builder.mapperBuilder().enableBaseResultMap().enableMapperAnnotation(); //生成resultMap，生成mapper注解
                     builder.addInclude(tables).addTablePrefix("BASIC_X"); //添加表，过滤表名前缀
                 })
-                //.templateEngine(new FreemarkerTemplateEngine()) // 使用Freemarker引擎模板，默认的是Velocity引擎模板
+                .templateEngine(new FreemarkerTemplateEngine()) // 使用Freemarker引擎模板，默认的是Velocity引擎模板
                 .templateConfig(builder -> {
                     builder.controller("\\templates\\controller.java.vm")
                             .service("\\templates\\service.java.vm")
                             .serviceImpl("\\templates\\serviceImpl.java.vm")
                             .mapper("\\templates\\mapper.java.vm")
-                            .entity("\\templates\\entity.java.vm")
-                            .mapperXml("\\templates\\mapper.xml.vm");
+                            .entity("\\templates\\entity.java.vm");
+                            //.mapperXml("\\templates\\mapper.xml.vm");
                 })
                 .execute();
     }

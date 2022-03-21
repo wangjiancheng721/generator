@@ -34,12 +34,12 @@
         TID, CODE, VCODE, VENDOR, WCODE, MAKERNAME, TDATE, EDATE, TVOL, TEMA, SPRICE, PRICE, TAXRATE, TAXKUBU, SOUKINGAKU, SOUSUUIN, APRICE, HOKAN, NOTE, SYSNOTE, INPUTDATE, INPUTUSER
     </sql>
 
-    <select id="getBASIC_XTANKList" resultMap="BaseResultMap">
+    <select id="getTankList" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
         FROM BASIC_XTANK
     </select>
 
-    <select id="getBASIC_XTANKById" resultMap="BaseResultMap">
+    <select id="getTankById" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
           FROM BASIC_XTANK
         WHERE

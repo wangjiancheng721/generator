@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Mapper;
  * </p>
  *
  * @author wjc
- * @since 2022-03-20
+ * @since 2022-03-21
  */
 @Mapper
 public interface CustMapper extends BaseMapper<Cust> {

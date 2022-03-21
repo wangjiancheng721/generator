@@ -15,7 +15,7 @@ import com.wms.basic.service.impl.CustServiceImpl;
  * </p>
  *
  * @author wjc
- * @since 2022-03-20
+ * @since 2022-03-21
  */
 @RestController
 @RequestMapping("/cust")
@@ -27,15 +27,15 @@ public class CustController {
     /**
     * 分页获取列表
     */
-    @GetMapping("/getCustList(Cust")
-    public Object getCustList(Cust cust) {
+    @PostMapping("/getCustList")
+    public Object getCustList(@RequestBody Cust cust) {
         return custService.getCustList(cust);
     }
 
     /**
     * 根据id获取信息
     */
-    @GetMapping("/getCustById")
+    @PostMapping("/getCustById")
     public Cust getCustById(@RequestBody Cust cust) {
         return custService.getCustById(cust);
     }

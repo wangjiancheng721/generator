@@ -15,7 +15,7 @@ import com.wms.basic.service.impl.TankServiceImpl;
  * </p>
  *
  * @author wjc
- * @since 2022-03-20
+ * @since 2022-03-21
  */
 @RestController
 @RequestMapping("/tank")
@@ -27,15 +27,15 @@ public class TankController {
     /**
     * 分页获取列表
     */
-    @GetMapping("/getTankList(Tank")
-    public Object getTankList(Tank tank) {
+    @PostMapping("/getTankList")
+    public Object getTankList(@RequestBody Tank tank) {
         return tankService.getTankList(tank);
     }
 
     /**
     * 根据id获取信息
     */
-    @GetMapping("/getTankById")
+    @PostMapping("/getTankById")
     public Tank getTankById(@RequestBody Tank tank) {
         return tankService.getTankById(tank);
     }

@@ -15,7 +15,7 @@ import com.wms.basic.service.impl.ItemServiceImpl;
  * </p>
  *
  * @author wjc
- * @since 2022-03-20
+ * @since 2022-03-21
  */
 @RestController
 @RequestMapping("/item")
@@ -27,15 +27,15 @@ public class ItemController {
     /**
     * 分页获取列表
     */
-    @GetMapping("/getItemList(Item")
-    public Object getItemList(Item item) {
+    @PostMapping("/getItemList")
+    public Object getItemList(@RequestBody Item item) {
         return itemService.getItemList(item);
     }
 
     /**
     * 根据id获取信息
     */
-    @GetMapping("/getItemById")
+    @PostMapping("/getItemById")
     public Item getItemById(@RequestBody Item item) {
         return itemService.getItemById(item);
     }

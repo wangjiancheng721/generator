@@ -30,12 +30,12 @@
         CODE, REV, CHGGRP, KCODE, KEDA, BUMO, OPT, SIYOU, SIYOUW, SIYOUF, FURYOU, SDATE, EDATE, NOKANRI, NOTE, SYSNOTE, INPUTDATE, INPUTUSER
     </sql>
 
-    <select id="getBASIC_XPRTSList" resultMap="BaseResultMap">
+    <select id="getPrtsList" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
         FROM BASIC_XPRTS
     </select>
 
-    <select id="getBASIC_XPRTSById" resultMap="BaseResultMap">
+    <select id="getPrtsById" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
           FROM BASIC_XPRTS
         WHERE

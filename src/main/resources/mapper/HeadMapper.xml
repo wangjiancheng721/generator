@@ -29,12 +29,12 @@
         CODE, NAME, MAINBUMO, DOFUKUSUU, DOSEIBAN, SEIBHKU, DORIREKIOYA, DORIREKIKO, DOLOT, PROJONLY, TANI1, OYAK, NOTE, SYSNOTE, PLANTID, INPUTDATE, INPUTUSER
     </sql>
 
-    <select id="getBASIC_XHEADList" resultMap="BaseResultMap">
+    <select id="getHeadList" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
         FROM BASIC_XHEAD
     </select>
 
-    <select id="getBASIC_XHEADById" resultMap="BaseResultMap">
+    <select id="getHeadById" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
           FROM BASIC_XHEAD
         WHERE
