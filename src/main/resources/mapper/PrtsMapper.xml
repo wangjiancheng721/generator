@@ -30,12 +30,12 @@
         CODE, REV, CHGGRP, KCODE, KEDA, BUMO, OPT, SIYOU, SIYOUW, SIYOUF, FURYOU, SDATE, EDATE, NOKANRI, NOTE, SYSNOTE, INPUTDATE, INPUTUSER
     </sql>
 
-    <select id="getPrtsList" resultMap="BaseResultMap">
+    <select id="selectPage" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
         FROM BASIC_XPRTS
     </select>
 
-    <select id="getPrtsById" resultMap="BaseResultMap">
+    <select id="selectOne" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
           FROM BASIC_XPRTS
         WHERE
@@ -48,7 +48,32 @@
             BUMO = #{bumo}
     </select>
 
-    <insert id="insertInfos">
+    <insert id="insert">
+        INSERT INTO BASIC_XPRTS(CODE, REV, CHGGRP, KCODE, KEDA, BUMO, OPT, SIYOU, SIYOUW, SIYOUF, FURYOU, SDATE, EDATE, NOKANRI, NOTE, SYSNOTE, INPUTDATE, INPUTUSER)
+        VALUES
+            (
+            #{item.code},
+            #{item.rev},
+            #{item.chggrp},
+            #{item.kcode},
+            #{item.keda},
+            #{item.bumo},
+            #{item.opt},
+            #{item.siyou},
+            #{item.siyouw},
+            #{item.siyouf},
+            #{item.furyou},
+            #{item.sdate},
+            #{item.edate},
+            #{item.nokanri},
+            #{item.note},
+            #{item.sysnote},
+            #{item.inputdate},
+            #{item.inputuser}
+            )
+    </insert>
+
+    <insert id="insertBatch">
         INSERT INTO BASIC_XPRTS(CODE, REV, CHGGRP, KCODE, KEDA, BUMO, OPT, SIYOU, SIYOUW, SIYOUF, FURYOU, SDATE, EDATE, NOKANRI, NOTE, SYSNOTE, INPUTDATE, INPUTUSER)
         VALUES
         <foreach collection="list" item="item" index="index" separator=",">
@@ -71,7 +96,7 @@
                 #{item.sysnote},
                 #{item.inputdate},
                 #{item.inputuser}
-            )
+            );
         </foreach>
     </insert>
 

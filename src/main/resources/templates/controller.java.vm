@@ -1,11 +1,13 @@
 package ${package.Controller};
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import com.wjc.generator.entity.ResponseEntity;
 import ${package.Entity}.${entity};
 import ${package.ServiceImpl}.${table.serviceImplName};
 #if(${superControllerClassPackage})
@@ -31,17 +33,18 @@ public class ${table.controllerName} {
     * 分页获取列表
     */
     @PostMapping("/get${table.entityName}List")
-    public Object get${table.entityName}List(@RequestBody ${entity} ${table.entityName.toLowerCase()}) {
+    public ResponseEntity<${entity}> get${table.entityName}List(@RequestBody ${entity} ${table.entityName.toLowerCase()}) {
+        Page<${entity}> page = new Page<${entity}>(${table.entityName.toLowerCase()}.getPageNo(),${table.entityName.toLowerCase()}.getPageSize());
 ##        int pageNo = Integer.parseInt(req.getParameter("page"));
 ##        int pageSize = Integer.parseInt(req.getParameter("limit"));
-        return ${table.entityName.toLowerCase()}Service.get${table.entityName}List(${table.entityName.toLowerCase()});
+        return ${table.entityName.toLowerCase()}Service.get${table.entityName}List(${table.entityName.toLowerCase()},page);
     }
 
     /**
     * 根据id获取信息
     */
     @PostMapping("/get${table.entityName}ById")
-    public ${table.entityName} get${table.entityName}ById(@RequestBody ${entity} ${table.entityName.toLowerCase()}) {
+    public ResponseEntity<${entity}> get${table.entityName}ById(@RequestBody ${entity} ${table.entityName.toLowerCase()}) {
         return ${table.entityName.toLowerCase()}Service.get${table.entityName}ById(${table.entityName.toLowerCase()});
     }
 
@@ -49,32 +52,40 @@ public class ${table.controllerName} {
      * 新增
      */
     @PostMapping("/insert${table.entityName}")
-    public void insert${table.entityName}(@RequestBody ${entity} ${table.entityName.toLowerCase()}) {
-        ${table.entityName.toLowerCase()}Service.insert${table.entityName}(${table.entityName.toLowerCase()});
+    public ResponseEntity<${entity}> insert${table.entityName}(@RequestBody ${entity} ${table.entityName.toLowerCase()}) {
+        return ${table.entityName.toLowerCase()}Service.insert${table.entityName}(${table.entityName.toLowerCase()});
+    }
+
+    /**
+     * 批量新增
+     */
+    @PostMapping("/insertBatch")
+    public ResponseEntity<${entity}> insertBatch(@RequestBody List<${entity}> ${table.entityName.toLowerCase()}s) {
+        return ${table.entityName.toLowerCase()}Service.insertBatch(${table.entityName.toLowerCase()}s);
     }
 
     /**
      * 更新
      */
     @PostMapping("/update${table.entityName}")
-    public void update${table.entityName}(@RequestBody ${entity} ${table.entityName.toLowerCase()}) {
-        ${table.entityName.toLowerCase()}Service.update${table.entityName}(${table.entityName.toLowerCase()});
+    public ResponseEntity<${entity}> update${table.entityName}(@RequestBody ${entity} ${table.entityName.toLowerCase()}) {
+        return ${table.entityName.toLowerCase()}Service.update${table.entityName}(${table.entityName.toLowerCase()});
     }
 
     /**
      * 根据主键删除
      */
     @DeleteMapping("/del${table.entityName}")
-    public void del${table.entityName}(@RequestBody ${entity} ${table.entityName.toLowerCase()}) {
-        ${table.entityName.toLowerCase()}Service.delete${table.entityName}(${table.entityName.toLowerCase()});
+    public ResponseEntity<${entity}> del${table.entityName}(@RequestBody ${entity} ${table.entityName.toLowerCase()}) {
+        return ${table.entityName.toLowerCase()}Service.delete${table.entityName}(${table.entityName.toLowerCase()});
     }
 
     /**
      * 根据id列表批量删除
      */
     @DeleteMapping("/del${table.entityName}List")
-    public void del${table.entityName}List(@RequestBody List<${entity}> ${table.entityName.toLowerCase()}s) {
-        ${table.entityName.toLowerCase()}Service.delete${table.entityName}List(${table.entityName.toLowerCase()}s);
+    public ResponseEntity<${entity}> del${table.entityName}List(@RequestBody List<${entity}> ${table.entityName.toLowerCase()}s) {
+        return ${table.entityName.toLowerCase()}Service.delete${table.entityName}List(${table.entityName.toLowerCase()}s);
     }
 
 }

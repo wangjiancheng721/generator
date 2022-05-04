@@ -3,6 +3,10 @@ package ${package.Service};
 import ${package.Entity}.${entity};
 import ${superServiceClassPackage};
 import java.util.List;
+
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+
+import com.wjc.generator.entity.ResponseEntity;
 /**
  * <p>
  * $!{table.comment} 服务类
@@ -20,37 +24,43 @@ public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
      * 分页查询
      * @return  Page<${table.entityName}>
      */
-    List<${entity}> get${table.entityName}List(${entity} ${table.entityName.toLowerCase()});
+    public ResponseEntity<${entity}> get${table.entityName}List(${entity} ${table.entityName.toLowerCase()}, Page page);
 
     /**
      * 根据${table.entityName}的id获取当前对象
      * @param ${table.entityName.toLowerCase()}
      * @return ${table.entityName}
      */
-    ${entity} get${table.entityName}ById(${entity} ${table.entityName.toLowerCase()});
+    public ResponseEntity<${entity}> get${table.entityName}ById(${entity} ${table.entityName.toLowerCase()});
 
     /**
      * 修改
      * @param ${table.entityName.toLowerCase()}
      */
-    void update${table.entityName}(${entity} ${table.entityName.toLowerCase()});
+    public ResponseEntity<${entity}> update${table.entityName}(${entity} ${table.entityName.toLowerCase()});
 
     /**
      * 新增
      * @param ${table.entityName.toLowerCase()}
      */
-    void insert${table.entityName}(${entity} ${table.entityName.toLowerCase()});
+    public ResponseEntity<${entity}> insert${table.entityName}(${entity} ${table.entityName.toLowerCase()});
+
+    /**
+     * 批量新增
+     * @param ${table.entityName.toLowerCase()}s
+     */
+    public ResponseEntity<${entity}> insertBatch(List<${entity}> ${table.entityName.toLowerCase()}s);
 
     /**
      * 删除
      * @param ${table.entityName.toLowerCase()}
      */
-    void delete${table.entityName}(${entity} ${table.entityName.toLowerCase()});
+    public ResponseEntity<${entity}> delete${table.entityName}(${entity} ${table.entityName.toLowerCase()});
 
     /**
     * 批量删除
     * @param ${table.entityName.toLowerCase()}s 要删除的集合列表
     */
-    void delete${table.entityName}List(List<${entity}> ${table.entityName.toLowerCase()}s);
+    public ResponseEntity<${entity}> delete${table.entityName}List(List<${entity}> ${table.entityName.toLowerCase()}s);
 }
 #end

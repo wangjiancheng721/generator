@@ -57,19 +57,71 @@
         BUMO, BNAME, DESNAME, DESNAMEGENP, GKU, CALEN, CALEPOWERN, SORTORDER, BUNRS, BUSHO, POWER, RATE, ARATE, YRATE, DOFLAT, BFNORMA, TOUJITU, NORMA, COUNTORDER, COUNTOKURE, COUNTSUSUMI, WEB, NOANSTERM, MAILTERM, DENPPATTERN, TANKSEARCHKU, HASUUGAKU, HASUUTAX, LASTSIMEDATE, HITO, TEL, FAX, SIME, KAMOKU, CURRE, ZIP, ADR1, ADR2, MAIL, PAYEECODE, NOTE, SYSNOTE, SECTKU, INPUTDATE, INPUTUSER
     </sql>
 
-    <select id="getSectList" resultMap="BaseResultMap">
+    <select id="selectPage" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
         FROM BASIC_XSECT
     </select>
 
-    <select id="getSectById" resultMap="BaseResultMap">
+    <select id="selectOne" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
           FROM BASIC_XSECT
         WHERE
             BUMO = #{bumo}
     </select>
 
-    <insert id="insertInfos">
+    <insert id="insert">
+        INSERT INTO BASIC_XSECT(BUMO, BNAME, DESNAME, DESNAMEGENP, GKU, CALEN, CALEPOWERN, SORTORDER, BUNRS, BUSHO, POWER, RATE, ARATE, YRATE, DOFLAT, BFNORMA, TOUJITU, NORMA, COUNTORDER, COUNTOKURE, COUNTSUSUMI, WEB, NOANSTERM, MAILTERM, DENPPATTERN, TANKSEARCHKU, HASUUGAKU, HASUUTAX, LASTSIMEDATE, HITO, TEL, FAX, SIME, KAMOKU, CURRE, ZIP, ADR1, ADR2, MAIL, PAYEECODE, NOTE, SYSNOTE, SECTKU, INPUTDATE, INPUTUSER)
+        VALUES
+            (
+            #{item.bumo},
+            #{item.bname},
+            #{item.desname},
+            #{item.desnamegenp},
+            #{item.gku},
+            #{item.calen},
+            #{item.calepowern},
+            #{item.sortorder},
+            #{item.bunrs},
+            #{item.busho},
+            #{item.power},
+            #{item.rate},
+            #{item.arate},
+            #{item.yrate},
+            #{item.doflat},
+            #{item.bfnorma},
+            #{item.toujitu},
+            #{item.norma},
+            #{item.countorder},
+            #{item.countokure},
+            #{item.countsusumi},
+            #{item.web},
+            #{item.noansterm},
+            #{item.mailterm},
+            #{item.denppattern},
+            #{item.tanksearchku},
+            #{item.hasuugaku},
+            #{item.hasuutax},
+            #{item.lastsimedate},
+            #{item.hito},
+            #{item.tel},
+            #{item.fax},
+            #{item.sime},
+            #{item.kamoku},
+            #{item.curre},
+            #{item.zip},
+            #{item.adr1},
+            #{item.adr2},
+            #{item.mail},
+            #{item.payeecode},
+            #{item.note},
+            #{item.sysnote},
+            #{item.sectku},
+            #{item.inputdate},
+            #{item.inputuser}
+            )
+    </insert>
+
+    <insert id="insertBatch">
         INSERT INTO BASIC_XSECT(BUMO, BNAME, DESNAME, DESNAMEGENP, GKU, CALEN, CALEPOWERN, SORTORDER, BUNRS, BUSHO, POWER, RATE, ARATE, YRATE, DOFLAT, BFNORMA, TOUJITU, NORMA, COUNTORDER, COUNTOKURE, COUNTSUSUMI, WEB, NOANSTERM, MAILTERM, DENPPATTERN, TANKSEARCHKU, HASUUGAKU, HASUUTAX, LASTSIMEDATE, HITO, TEL, FAX, SIME, KAMOKU, CURRE, ZIP, ADR1, ADR2, MAIL, PAYEECODE, NOTE, SYSNOTE, SECTKU, INPUTDATE, INPUTUSER)
         VALUES
         <foreach collection="list" item="item" index="index" separator=",">
@@ -119,7 +171,7 @@
                 #{item.sectku},
                 #{item.inputdate},
                 #{item.inputuser}
-            )
+            );
         </foreach>
     </insert>
 

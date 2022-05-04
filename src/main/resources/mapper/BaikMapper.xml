@@ -31,19 +31,45 @@
         BID, CODE, CCODE, CUST, TDATE, EDATE, TVOL, PRICE, APRICE, TAXRATE, TAXKUBU, SOUSUUOUT, SOUOUTKINGAKU, FDATE, HOKAN, NOTE, SYSNOTE, INPUTDATE, INPUTUSER
     </sql>
 
-    <select id="getBaikList" resultMap="BaseResultMap">
+    <select id="selectPage" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
         FROM BASIC_XBAIK
     </select>
 
-    <select id="getBaikById" resultMap="BaseResultMap">
+    <select id="selectOne" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
           FROM BASIC_XBAIK
         WHERE
             BID = #{bid}
     </select>
 
-    <insert id="insertInfos">
+    <insert id="insert">
+        INSERT INTO BASIC_XBAIK(BID, CODE, CCODE, CUST, TDATE, EDATE, TVOL, PRICE, APRICE, TAXRATE, TAXKUBU, SOUSUUOUT, SOUOUTKINGAKU, FDATE, HOKAN, NOTE, SYSNOTE, INPUTDATE, INPUTUSER)
+        VALUES
+            (
+            #{item.bid},
+            #{item.code},
+            #{item.ccode},
+            #{item.cust},
+            #{item.tdate},
+            #{item.edate},
+            #{item.tvol},
+            #{item.price},
+            #{item.aprice},
+            #{item.taxrate},
+            #{item.taxkubu},
+            #{item.sousuuout},
+            #{item.sououtkingaku},
+            #{item.fdate},
+            #{item.hokan},
+            #{item.note},
+            #{item.sysnote},
+            #{item.inputdate},
+            #{item.inputuser}
+            )
+    </insert>
+
+    <insert id="insertBatch">
         INSERT INTO BASIC_XBAIK(BID, CODE, CCODE, CUST, TDATE, EDATE, TVOL, PRICE, APRICE, TAXRATE, TAXKUBU, SOUSUUOUT, SOUOUTKINGAKU, FDATE, HOKAN, NOTE, SYSNOTE, INPUTDATE, INPUTUSER)
         VALUES
         <foreach collection="list" item="item" index="index" separator=",">
@@ -67,7 +93,7 @@
                 #{item.sysnote},
                 #{item.inputdate},
                 #{item.inputuser}
-            )
+            );
         </foreach>
     </insert>
 

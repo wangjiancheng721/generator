@@ -95,12 +95,12 @@
         CODE, BUNR, BUMO, VENDOR, FIXLEVEL, DKAKU, KAKU, KOTEIM, STZAIK, LEAD, KOUKI, HOJYUU, KURIAGE, JCODE, KOUTHIKI, HOKAN, NEXTBUMO, LOTH, LOTS, LOTS2, HIMOKU, FURYOU, LEAD2, TANIKOUKI, KOUKI2, LINKSLIP, NOKANRI, PICKKU, PICKLOTS, SPICKKU, HCTENKANRI, CHANGEKAKU, MAXZAIK, MINZAIK, STDCOUNT, EMACOUNT, ZAIKMIN, TEMPZAIKMIN, MAXLOTH, MAXLOTS, LOTHT, LOTKIKAN, FLATJYUN, STZAIKEND, UCHIKIRI, MATOMEH, CALEM, HIKIKU, HIKILOTS, MINASIKUBU, MINASIGENDO, COMPO, DOLOTBUNKATU, PCAPA, TANKAH, SSUMPRICE, STUMIPRICE, PKET, GAKUJ, KANZANZ, KANZANP, KANZANZA, KANZANJ, KANZANV, KANZANK, TANI2, DFAKU, DFAKU2, DFJKU, DFJKU2, KENSA, KDESNAME, SLNOHD, SETGRP, SETGRPRATIO, KIGENKUBU, KIGEN, ACTLIMIT, HIKILIMIT, NOTE, SYSNOTE, INPUTDATE, INPUTUSER
     </sql>
 
-    <select id="getItemList" resultMap="BaseResultMap">
+    <select id="selectPage" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
         FROM BASIC_XITEM
     </select>
 
-    <select id="getItemById" resultMap="BaseResultMap">
+    <select id="selectOne" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
           FROM BASIC_XITEM
         WHERE
@@ -109,7 +109,97 @@
             BUMO = #{bumo}
     </select>
 
-    <insert id="insertInfos">
+    <insert id="insert">
+        INSERT INTO BASIC_XITEM(CODE, BUNR, BUMO, VENDOR, FIXLEVEL, DKAKU, KAKU, KOTEIM, STZAIK, LEAD, KOUKI, HOJYUU, KURIAGE, JCODE, KOUTHIKI, HOKAN, NEXTBUMO, LOTH, LOTS, LOTS2, HIMOKU, FURYOU, LEAD2, TANIKOUKI, KOUKI2, LINKSLIP, NOKANRI, PICKKU, PICKLOTS, SPICKKU, HCTENKANRI, CHANGEKAKU, MAXZAIK, MINZAIK, STDCOUNT, EMACOUNT, ZAIKMIN, TEMPZAIKMIN, MAXLOTH, MAXLOTS, LOTHT, LOTKIKAN, FLATJYUN, STZAIKEND, UCHIKIRI, MATOMEH, CALEM, HIKIKU, HIKILOTS, MINASIKUBU, MINASIGENDO, COMPO, DOLOTBUNKATU, PCAPA, TANKAH, SSUMPRICE, STUMIPRICE, PKET, GAKUJ, KANZANZ, KANZANP, KANZANZA, KANZANJ, KANZANV, KANZANK, TANI2, DFAKU, DFAKU2, DFJKU, DFJKU2, KENSA, KDESNAME, SLNOHD, SETGRP, SETGRPRATIO, KIGENKUBU, KIGEN, ACTLIMIT, HIKILIMIT, NOTE, SYSNOTE, INPUTDATE, INPUTUSER)
+        VALUES
+            (
+            #{item.code},
+            #{item.bunr},
+            #{item.bumo},
+            #{item.vendor},
+            #{item.fixlevel},
+            #{item.dkaku},
+            #{item.kaku},
+            #{item.koteim},
+            #{item.stzaik},
+            #{item.lead},
+            #{item.kouki},
+            #{item.hojyuu},
+            #{item.kuriage},
+            #{item.jcode},
+            #{item.kouthiki},
+            #{item.hokan},
+            #{item.nextbumo},
+            #{item.loth},
+            #{item.lots},
+            #{item.lots2},
+            #{item.himoku},
+            #{item.furyou},
+            #{item.lead2},
+            #{item.tanikouki},
+            #{item.kouki2},
+            #{item.linkslip},
+            #{item.nokanri},
+            #{item.pickku},
+            #{item.picklots},
+            #{item.spickku},
+            #{item.hctenkanri},
+            #{item.changekaku},
+            #{item.maxzaik},
+            #{item.minzaik},
+            #{item.stdcount},
+            #{item.emacount},
+            #{item.zaikmin},
+            #{item.tempzaikmin},
+            #{item.maxloth},
+            #{item.maxlots},
+            #{item.lotht},
+            #{item.lotkikan},
+            #{item.flatjyun},
+            #{item.stzaikend},
+            #{item.uchikiri},
+            #{item.matomeh},
+            #{item.calem},
+            #{item.hikiku},
+            #{item.hikilots},
+            #{item.minasikubu},
+            #{item.minasigendo},
+            #{item.compo},
+            #{item.dolotbunkatu},
+            #{item.pcapa},
+            #{item.tankah},
+            #{item.ssumprice},
+            #{item.stumiprice},
+            #{item.pket},
+            #{item.gakuj},
+            #{item.kanzanz},
+            #{item.kanzanp},
+            #{item.kanzanza},
+            #{item.kanzanj},
+            #{item.kanzanv},
+            #{item.kanzank},
+            #{item.tani2},
+            #{item.dfaku},
+            #{item.dfaku2},
+            #{item.dfjku},
+            #{item.dfjku2},
+            #{item.kensa},
+            #{item.kdesname},
+            #{item.slnohd},
+            #{item.setgrp},
+            #{item.setgrpratio},
+            #{item.kigenkubu},
+            #{item.kigen},
+            #{item.actlimit},
+            #{item.hikilimit},
+            #{item.note},
+            #{item.sysnote},
+            #{item.inputdate},
+            #{item.inputuser}
+            )
+    </insert>
+
+    <insert id="insertBatch">
         INSERT INTO BASIC_XITEM(CODE, BUNR, BUMO, VENDOR, FIXLEVEL, DKAKU, KAKU, KOTEIM, STZAIK, LEAD, KOUKI, HOJYUU, KURIAGE, JCODE, KOUTHIKI, HOKAN, NEXTBUMO, LOTH, LOTS, LOTS2, HIMOKU, FURYOU, LEAD2, TANIKOUKI, KOUKI2, LINKSLIP, NOKANRI, PICKKU, PICKLOTS, SPICKKU, HCTENKANRI, CHANGEKAKU, MAXZAIK, MINZAIK, STDCOUNT, EMACOUNT, ZAIKMIN, TEMPZAIKMIN, MAXLOTH, MAXLOTS, LOTHT, LOTKIKAN, FLATJYUN, STZAIKEND, UCHIKIRI, MATOMEH, CALEM, HIKIKU, HIKILOTS, MINASIKUBU, MINASIGENDO, COMPO, DOLOTBUNKATU, PCAPA, TANKAH, SSUMPRICE, STUMIPRICE, PKET, GAKUJ, KANZANZ, KANZANP, KANZANZA, KANZANJ, KANZANV, KANZANK, TANI2, DFAKU, DFAKU2, DFJKU, DFJKU2, KENSA, KDESNAME, SLNOHD, SETGRP, SETGRPRATIO, KIGENKUBU, KIGEN, ACTLIMIT, HIKILIMIT, NOTE, SYSNOTE, INPUTDATE, INPUTUSER)
         VALUES
         <foreach collection="list" item="item" index="index" separator=",">
@@ -197,7 +287,7 @@
                 #{item.sysnote},
                 #{item.inputdate},
                 #{item.inputuser}
-            )
+            );
         </foreach>
     </insert>
 

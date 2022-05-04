@@ -45,19 +45,59 @@
         CUST, SKYTERMSM, SKYTERMSD, TAXH, CNAME, DESNAME, DESNAMEGENP, DESNAMESKYU, CALEN, YLEAD, DELNAIJIKIKAN, OVERTAKE, HASUUGAKU, HASUUTAX, BUNRC, BUSHO, HITO, TEL, FAX, SIME, LASTSIMEDATE, KAMOKU, CURRE, ZIP, ADR1, ADR2, MAIL, NOTE, SYSNOTE, CUSTKU, LINKCUST, INPUTDATE, INPUTUSER
     </sql>
 
-    <select id="getCustList" resultMap="BaseResultMap">
+    <select id="selectPage" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
         FROM BASIC_XCUST
     </select>
 
-    <select id="getCustById" resultMap="BaseResultMap">
+    <select id="selectOne" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
           FROM BASIC_XCUST
         WHERE
             CUST = #{cust}
     </select>
 
-    <insert id="insertInfos">
+    <insert id="insert">
+        INSERT INTO BASIC_XCUST(CUST, SKYTERMSM, SKYTERMSD, TAXH, CNAME, DESNAME, DESNAMEGENP, DESNAMESKYU, CALEN, YLEAD, DELNAIJIKIKAN, OVERTAKE, HASUUGAKU, HASUUTAX, BUNRC, BUSHO, HITO, TEL, FAX, SIME, LASTSIMEDATE, KAMOKU, CURRE, ZIP, ADR1, ADR2, MAIL, NOTE, SYSNOTE, CUSTKU, LINKCUST, INPUTDATE, INPUTUSER)
+        VALUES
+            (
+            #{item.cust},
+            #{item.skytermsm},
+            #{item.skytermsd},
+            #{item.taxh},
+            #{item.cname},
+            #{item.desname},
+            #{item.desnamegenp},
+            #{item.desnameskyu},
+            #{item.calen},
+            #{item.ylead},
+            #{item.delnaijikikan},
+            #{item.overtake},
+            #{item.hasuugaku},
+            #{item.hasuutax},
+            #{item.bunrc},
+            #{item.busho},
+            #{item.hito},
+            #{item.tel},
+            #{item.fax},
+            #{item.sime},
+            #{item.lastsimedate},
+            #{item.kamoku},
+            #{item.curre},
+            #{item.zip},
+            #{item.adr1},
+            #{item.adr2},
+            #{item.mail},
+            #{item.note},
+            #{item.sysnote},
+            #{item.custku},
+            #{item.linkcust},
+            #{item.inputdate},
+            #{item.inputuser}
+            )
+    </insert>
+
+    <insert id="insertBatch">
         INSERT INTO BASIC_XCUST(CUST, SKYTERMSM, SKYTERMSD, TAXH, CNAME, DESNAME, DESNAMEGENP, DESNAMESKYU, CALEN, YLEAD, DELNAIJIKIKAN, OVERTAKE, HASUUGAKU, HASUUTAX, BUNRC, BUSHO, HITO, TEL, FAX, SIME, LASTSIMEDATE, KAMOKU, CURRE, ZIP, ADR1, ADR2, MAIL, NOTE, SYSNOTE, CUSTKU, LINKCUST, INPUTDATE, INPUTUSER)
         VALUES
         <foreach collection="list" item="item" index="index" separator=",">
@@ -95,7 +135,7 @@
                 #{item.linkcust},
                 #{item.inputdate},
                 #{item.inputuser}
-            )
+            );
         </foreach>
     </insert>
 

@@ -23,12 +23,12 @@
         CURRE, TDATE, CRATES, CRATEF, COPE, CPOINTT, CPOINTG, NOTE, SYSNOTE, INPUTDATE, INPUTUSER
     </sql>
 
-    <select id="getCurrList" resultMap="BaseResultMap">
+    <select id="selectPage" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
         FROM BASIC_XCURR
     </select>
 
-    <select id="getCurrById" resultMap="BaseResultMap">
+    <select id="selectOne" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
           FROM BASIC_XCURR
         WHERE
@@ -37,7 +37,25 @@
             TDATE = #{tdate}
     </select>
 
-    <insert id="insertInfos">
+    <insert id="insert">
+        INSERT INTO BASIC_XCURR(CURRE, TDATE, CRATES, CRATEF, COPE, CPOINTT, CPOINTG, NOTE, SYSNOTE, INPUTDATE, INPUTUSER)
+        VALUES
+            (
+            #{item.curre},
+            #{item.tdate},
+            #{item.crates},
+            #{item.cratef},
+            #{item.cope},
+            #{item.cpointt},
+            #{item.cpointg},
+            #{item.note},
+            #{item.sysnote},
+            #{item.inputdate},
+            #{item.inputuser}
+            )
+    </insert>
+
+    <insert id="insertBatch">
         INSERT INTO BASIC_XCURR(CURRE, TDATE, CRATES, CRATEF, COPE, CPOINTT, CPOINTG, NOTE, SYSNOTE, INPUTDATE, INPUTUSER)
         VALUES
         <foreach collection="list" item="item" index="index" separator=",">
@@ -53,7 +71,7 @@
                 #{item.sysnote},
                 #{item.inputdate},
                 #{item.inputuser}
-            )
+            );
         </foreach>
     </insert>
 

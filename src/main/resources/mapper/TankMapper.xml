@@ -34,19 +34,48 @@
         TID, CODE, VCODE, VENDOR, WCODE, MAKERNAME, TDATE, EDATE, TVOL, TEMA, SPRICE, PRICE, TAXRATE, TAXKUBU, SOUKINGAKU, SOUSUUIN, APRICE, HOKAN, NOTE, SYSNOTE, INPUTDATE, INPUTUSER
     </sql>
 
-    <select id="getTankList" resultMap="BaseResultMap">
+    <select id="selectPage" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
         FROM BASIC_XTANK
     </select>
 
-    <select id="getTankById" resultMap="BaseResultMap">
+    <select id="selectOne" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
           FROM BASIC_XTANK
         WHERE
             TID = #{tid}
     </select>
 
-    <insert id="insertInfos">
+    <insert id="insert">
+        INSERT INTO BASIC_XTANK(TID, CODE, VCODE, VENDOR, WCODE, MAKERNAME, TDATE, EDATE, TVOL, TEMA, SPRICE, PRICE, TAXRATE, TAXKUBU, SOUKINGAKU, SOUSUUIN, APRICE, HOKAN, NOTE, SYSNOTE, INPUTDATE, INPUTUSER)
+        VALUES
+            (
+            #{item.tid},
+            #{item.code},
+            #{item.vcode},
+            #{item.vendor},
+            #{item.wcode},
+            #{item.makername},
+            #{item.tdate},
+            #{item.edate},
+            #{item.tvol},
+            #{item.tema},
+            #{item.sprice},
+            #{item.price},
+            #{item.taxrate},
+            #{item.taxkubu},
+            #{item.soukingaku},
+            #{item.sousuuin},
+            #{item.aprice},
+            #{item.hokan},
+            #{item.note},
+            #{item.sysnote},
+            #{item.inputdate},
+            #{item.inputuser}
+            )
+    </insert>
+
+    <insert id="insertBatch">
         INSERT INTO BASIC_XTANK(TID, CODE, VCODE, VENDOR, WCODE, MAKERNAME, TDATE, EDATE, TVOL, TEMA, SPRICE, PRICE, TAXRATE, TAXKUBU, SOUKINGAKU, SOUSUUIN, APRICE, HOKAN, NOTE, SYSNOTE, INPUTDATE, INPUTUSER)
         VALUES
         <foreach collection="list" item="item" index="index" separator=",">
@@ -73,7 +102,7 @@
                 #{item.sysnote},
                 #{item.inputdate},
                 #{item.inputuser}
-            )
+            )；
         </foreach>
     </insert>
 

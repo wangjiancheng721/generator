@@ -29,19 +29,43 @@
         CODE, NAME, MAINBUMO, DOFUKUSUU, DOSEIBAN, SEIBHKU, DORIREKIOYA, DORIREKIKO, DOLOT, PROJONLY, TANI1, OYAK, NOTE, SYSNOTE, PLANTID, INPUTDATE, INPUTUSER
     </sql>
 
-    <select id="getHeadList" resultMap="BaseResultMap">
+    <select id="selectPage" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
         FROM BASIC_XHEAD
     </select>
 
-    <select id="getHeadById" resultMap="BaseResultMap">
+    <select id="selectOne" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
           FROM BASIC_XHEAD
         WHERE
             CODE = #{code}
     </select>
 
-    <insert id="insertInfos">
+    <insert id="insert">
+        INSERT INTO BASIC_XHEAD(CODE, NAME, MAINBUMO, DOFUKUSUU, DOSEIBAN, SEIBHKU, DORIREKIOYA, DORIREKIKO, DOLOT, PROJONLY, TANI1, OYAK, NOTE, SYSNOTE, PLANTID, INPUTDATE, INPUTUSER)
+        VALUES
+            (
+            #{item.code},
+            #{item.name},
+            #{item.mainbumo},
+            #{item.dofukusuu},
+            #{item.doseiban},
+            #{item.seibhku},
+            #{item.dorirekioya},
+            #{item.dorirekiko},
+            #{item.dolot},
+            #{item.projonly},
+            #{item.tani1},
+            #{item.oyak},
+            #{item.note},
+            #{item.sysnote},
+            #{item.plantid},
+            #{item.inputdate},
+            #{item.inputuser}
+            )
+    </insert>
+
+    <insert id="insertBatch">
         INSERT INTO BASIC_XHEAD(CODE, NAME, MAINBUMO, DOFUKUSUU, DOSEIBAN, SEIBHKU, DORIREKIOYA, DORIREKIKO, DOLOT, PROJONLY, TANI1, OYAK, NOTE, SYSNOTE, PLANTID, INPUTDATE, INPUTUSER)
         VALUES
         <foreach collection="list" item="item" index="index" separator=",">
@@ -63,7 +87,7 @@
                 #{item.plantid},
                 #{item.inputdate},
                 #{item.inputuser}
-            )
+            );
         </foreach>
     </insert>
 
