@@ -1,8 +1,8 @@
 package com.wms.basic.service.impl;
 
-import com.wjc.generator.util.HandleExcel;
 import com.wms.basic.entity.Cust;
 import com.wms.basic.entity.Cust;
+import com.wms.basic.entity.ResponseEntity;
 import com.wms.basic.mapper.CustMapper;
 import com.wms.basic.service.ICustService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -14,11 +14,11 @@ import java.util.Map;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.wms.basic.util.HandleExcel;
+import com.wms.basic.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wjc.generator.entity.ResponseEntity;
-import com.wjc.generator.util.ResponseUtil;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -38,7 +38,7 @@ public class CustServiceImpl extends ServiceImpl<CustMapper, Cust> implements IC
     private CustMapper custMapper;
 
     @Override
-    public ResponseEntity<Cust> getCustList(Cust cust,Page page){
+    public ResponseEntity<Cust> getCustList(Cust cust, Page page){
         ResponseEntity<Cust> result = new ResponseEntity<Cust>();
         QueryWrapper queryWrapper = new QueryWrapper(cust);
         page = custMapper.selectPage(page, queryWrapper);

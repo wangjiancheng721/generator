@@ -16,4 +16,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface BaikMapper extends BaseMapper<Baik> {
 
+    int insertBaik(Baik baik);
+
 }

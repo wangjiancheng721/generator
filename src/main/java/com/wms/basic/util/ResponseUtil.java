@@ -1,6 +1,6 @@
-package com.wjc.generator.util;
+package com.wms.basic.util;
 
-import com.wjc.generator.entity.ResponseEntity;
+import com.wms.basic.entity.ResponseEntity;
 
 import java.util.List;
 

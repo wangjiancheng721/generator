@@ -1,12 +1,10 @@
-package com.wjc.generator;
+package com.wms.basic;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 
-//@SpringBootApplication(scanBasePackages = "com.wms.basic")
+@SpringBootApplication(scanBasePackages = "com.wms.basic")
 @MapperScan("com.wms.basic.mapper")
 public class GenertorApplication {
 

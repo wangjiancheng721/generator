@@ -1,8 +1,8 @@
 package com.wms.basic.service.impl;
 
-import com.wjc.generator.util.HandleExcel;
 import com.wms.basic.entity.Head;
 import com.wms.basic.entity.Head;
+import com.wms.basic.entity.ResponseEntity;
 import com.wms.basic.mapper.HeadMapper;
 import com.wms.basic.service.IHeadService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -14,11 +14,11 @@ import java.util.Map;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.wms.basic.util.HandleExcel;
+import com.wms.basic.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wjc.generator.entity.ResponseEntity;
-import com.wjc.generator.util.ResponseUtil;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -96,7 +96,7 @@ public class HeadServiceImpl extends ServiceImpl<HeadMapper, Head> implements IH
     }
 
     @Override
-    public  ResponseEntity<Head> deleteHeadList(List<Head> heads) {
+    public ResponseEntity<Head> deleteHeadList(List<Head> heads) {
         ResponseEntity<Head> result = new ResponseEntity<Head>();
         Integer count = headMapper.deleteBatchIds(heads);
         result = ResponseUtil.responseSuccess(count);

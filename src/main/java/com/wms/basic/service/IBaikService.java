@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
-import com.wjc.generator.entity.ResponseEntity;
+import com.wms.basic.entity.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 
 /**

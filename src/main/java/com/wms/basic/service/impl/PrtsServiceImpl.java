@@ -1,9 +1,9 @@
 package com.wms.basic.service.impl;
 
-import com.wjc.generator.util.HandleExcel;
 import com.wms.basic.entity.Cust;
 import com.wms.basic.entity.Head;
 import com.wms.basic.entity.Prts;
+import com.wms.basic.entity.ResponseEntity;
 import com.wms.basic.mapper.PrtsMapper;
 import com.wms.basic.service.IPrtsService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -15,11 +15,11 @@ import java.util.Map;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.wms.basic.util.HandleExcel;
+import com.wms.basic.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wjc.generator.entity.ResponseEntity;
-import com.wjc.generator.util.ResponseUtil;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -39,7 +39,7 @@ public class PrtsServiceImpl extends ServiceImpl<PrtsMapper, Prts> implements IP
     private PrtsMapper prtsMapper;
 
     @Override
-    public ResponseEntity<Prts> getPrtsList(Prts prts,Page page){
+    public ResponseEntity<Prts> getPrtsList(Prts prts, Page page){
         ResponseEntity<Prts> result = new ResponseEntity<Prts>();
         QueryWrapper queryWrapper = new QueryWrapper(prts);
         page = prtsMapper.selectPage(page, queryWrapper);

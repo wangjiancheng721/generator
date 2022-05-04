@@ -1,4 +1,4 @@
-package com.wjc.generator.entity;
+package com.wms.basic.entity;
 
 
 import lombok.Data;

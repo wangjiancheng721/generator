@@ -1,12 +1,11 @@
 package com.wms.basic.service.impl;
 
-import com.wjc.generator.util.HandleExcel;
 import com.wms.basic.entity.Baik;
+import com.wms.basic.entity.ResponseEntity;
 import com.wms.basic.mapper.BaikMapper;
 import com.wms.basic.service.IBaikService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,11 +13,11 @@ import java.util.Map;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.wms.basic.util.HandleExcel;
+import com.wms.basic.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wjc.generator.entity.ResponseEntity;
-import com.wjc.generator.util.ResponseUtil;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -38,7 +37,7 @@ public class BaikServiceImpl extends ServiceImpl<BaikMapper, Baik> implements IB
     private BaikMapper baikMapper;
 
     @Override
-    public ResponseEntity<Baik> getBaikList(Baik baik,Page page){
+    public ResponseEntity<Baik> getBaikList(Baik baik, Page page){
         ResponseEntity<Baik> result = new ResponseEntity<Baik>();
         QueryWrapper queryWrapper = new QueryWrapper(baik);
         page = baikMapper.selectPage(page, queryWrapper);
@@ -70,7 +69,7 @@ public class BaikServiceImpl extends ServiceImpl<BaikMapper, Baik> implements IB
     @Override
     public ResponseEntity<Baik> insertBaik(Baik baik){
         ResponseEntity<Baik> result = new ResponseEntity<Baik>();
-        Integer count = baikMapper.insert(baik);
+        Integer count = baikMapper.insertBaik(baik);
         result = ResponseUtil.responseSuccess(count);
         return result;
     }

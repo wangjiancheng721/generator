@@ -1,9 +1,9 @@
 package com.wms.basic.service.impl;
 
-import com.wjc.generator.util.HandleExcel;
 import com.wms.basic.entity.Item;
 import com.wms.basic.entity.Head;
 import com.wms.basic.entity.Item;
+import com.wms.basic.entity.ResponseEntity;
 import com.wms.basic.mapper.ItemMapper;
 import com.wms.basic.service.IItemService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -15,11 +15,11 @@ import java.util.Map;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.wms.basic.util.HandleExcel;
+import com.wms.basic.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wjc.generator.entity.ResponseEntity;
-import com.wjc.generator.util.ResponseUtil;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -39,7 +39,7 @@ public class ItemServiceImpl extends ServiceImpl<ItemMapper, Item> implements II
     private ItemMapper itemMapper;
 
     @Override
-    public ResponseEntity<Item> getItemList(Item item,Page page){
+    public ResponseEntity<Item> getItemList(Item item, Page page){
         ResponseEntity<Item> result = new ResponseEntity<Item>();
         QueryWrapper queryWrapper = new QueryWrapper(item);
         page = itemMapper.selectPage(page, queryWrapper);

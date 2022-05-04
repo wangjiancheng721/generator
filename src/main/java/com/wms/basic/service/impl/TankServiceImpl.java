@@ -1,6 +1,6 @@
 package com.wms.basic.service.impl;
 
-import com.wjc.generator.util.HandleExcel;
+import com.wms.basic.entity.ResponseEntity;
 import com.wms.basic.entity.Tank;
 import com.wms.basic.mapper.TankMapper;
 import com.wms.basic.service.ITankService;
@@ -13,11 +13,11 @@ import java.util.Map;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.wms.basic.util.HandleExcel;
+import com.wms.basic.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wjc.generator.entity.ResponseEntity;
-import com.wjc.generator.util.ResponseUtil;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -37,7 +37,7 @@ public class TankServiceImpl extends ServiceImpl<TankMapper, Tank> implements IT
     private TankMapper tankMapper;
 
     @Override
-    public ResponseEntity<Tank> getTankList(Tank tank,Page page){
+    public ResponseEntity<Tank> getTankList(Tank tank, Page page){
         ResponseEntity<Tank> result = new ResponseEntity<Tank>();
         QueryWrapper queryWrapper = new QueryWrapper(tank);
         page = tankMapper.selectPage(page, queryWrapper);

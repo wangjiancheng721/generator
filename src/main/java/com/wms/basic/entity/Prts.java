@@ -1,8 +1,6 @@
 package com.wms.basic.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.wjc.generator.entity.BaseEntity;
-import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
 
