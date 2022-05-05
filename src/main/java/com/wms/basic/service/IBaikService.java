@@ -36,13 +36,13 @@ public interface IBaikService extends IService<Baik> {
      * 修改
      * @param baik
      */
-    public ResponseEntity<Baik> updateBaik(Baik baik);
+    public ResponseEntity<Baik> update(Baik baik);
 
     /**
      * 新增
      * @param baik
      */
-    public ResponseEntity<Baik> insertBaik(Baik baik);
+    public ResponseEntity<Baik> insert(Baik baik);
 
     /**
      * 批量新增

@@ -40,8 +40,7 @@ public class CurrServiceImpl extends ServiceImpl<CurrMapper, Curr> implements IC
     @Override
     public ResponseEntity<Curr> getCurrList(Curr curr,Page page){
         ResponseEntity<Curr> result = new ResponseEntity<Curr>();
-        QueryWrapper queryWrapper = new QueryWrapper(curr);
-        page = currMapper.selectPage(page, queryWrapper);
+        page = currMapper.selectPage(curr, page);
         result = ResponseUtil.responseSuccess(page.getRecords());
         return result;
 
@@ -53,8 +52,7 @@ public class CurrServiceImpl extends ServiceImpl<CurrMapper, Curr> implements IC
     @Override
     public ResponseEntity<Curr> getCurrById(Curr curr){
         ResponseEntity<Curr> result = new ResponseEntity<Curr>();
-        QueryWrapper queryWrapper = new QueryWrapper(curr);
-        curr = currMapper.selectOne(queryWrapper);
+        curr = currMapper.selectOne(curr);
         result = ResponseUtil.responseSuccess(curr);
         return result;
     }
@@ -78,11 +76,12 @@ public class CurrServiceImpl extends ServiceImpl<CurrMapper, Curr> implements IC
     @Override
     public ResponseEntity<Curr> insertBatch(List<Curr> currs){
         ResponseEntity<Curr> result = new ResponseEntity<Curr>();
-        Integer count = 0;
-        for(Curr curr : currs){
-            currMapper.insert(curr);
-            count++;
-        }
+//        Integer count = 0;
+//        for(Curr curr : currs){
+//            currMapper.insert(curr);
+//            count++;
+//        }
+        int count = currMapper.insertBatch(currs);
         result = ResponseUtil.responseSuccess(count);
         return result;
     }

@@ -1,8 +1,6 @@
 package com.wms.basic.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 /**
  * <p>
@@ -12,10 +10,8 @@ import lombok.Setter;
  * @author wjc
  * @since 2022-03-22
  */
-@Getter
-@Setter
-@TableName("BASIC_XITEM")
-public class Item extends BaseEntity {
+@Data
+public class Item extends BaseEntity{
 
     private static final long serialVersionUID = 1L;
 

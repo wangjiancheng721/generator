@@ -49,7 +49,7 @@ public class BaikController {
      */
     @PostMapping("/insertBaik")
     public ResponseEntity<Baik> insertBaik(@RequestBody Baik baik) {
-        return baikService.insertBaik(baik);
+        return baikService.insert(baik);
     }
 
     /**
@@ -65,7 +65,7 @@ public class BaikController {
      */
     @PostMapping("/updateBaik")
     public ResponseEntity<Baik> updateBaik(@RequestBody Baik baik) {
-        return baikService.updateBaik(baik);
+        return baikService.update(baik);
     }
 
     /**

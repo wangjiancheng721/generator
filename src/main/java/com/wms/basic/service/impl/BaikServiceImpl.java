@@ -39,8 +39,7 @@ public class BaikServiceImpl extends ServiceImpl<BaikMapper, Baik> implements IB
     @Override
     public ResponseEntity<Baik> getBaikList(Baik baik, Page page){
         ResponseEntity<Baik> result = new ResponseEntity<Baik>();
-        QueryWrapper queryWrapper = new QueryWrapper(baik);
-        page = baikMapper.selectPage(page, queryWrapper);
+        page = baikMapper.selectPage(baik, page);
         result = ResponseUtil.responseSuccess(page.getRecords());
         return result;
 
@@ -52,24 +51,23 @@ public class BaikServiceImpl extends ServiceImpl<BaikMapper, Baik> implements IB
     @Override
     public ResponseEntity<Baik> getBaikById(Baik baik){
         ResponseEntity<Baik> result = new ResponseEntity<Baik>();
-        QueryWrapper queryWrapper = new QueryWrapper(baik);
-        baik = baikMapper.selectOne(queryWrapper);
+        baik = baikMapper.selectOne(baik);
         result = ResponseUtil.responseSuccess(baik);
         return result;
     }
 
     @Override
-    public ResponseEntity<Baik> updateBaik(Baik baik){
+    public ResponseEntity<Baik> update(Baik baik){
         ResponseEntity<Baik> result = new ResponseEntity<Baik>();
-        Integer count = baikMapper.updateById(baik);
+        Integer count = baikMapper.update(baik);
         result = ResponseUtil.responseSuccess(count);
         return result;
     }
 
     @Override
-    public ResponseEntity<Baik> insertBaik(Baik baik){
+    public ResponseEntity<Baik> insert(Baik baik){
         ResponseEntity<Baik> result = new ResponseEntity<Baik>();
-        Integer count = baikMapper.insertBaik(baik);
+        Integer count = baikMapper.insert(baik);
         result = ResponseUtil.responseSuccess(count);
         return result;
     }
@@ -77,11 +75,12 @@ public class BaikServiceImpl extends ServiceImpl<BaikMapper, Baik> implements IB
     @Override
     public ResponseEntity<Baik> insertBatch(List<Baik> baiks){
         ResponseEntity<Baik> result = new ResponseEntity<Baik>();
-        Integer count = 0;
-        for(Baik baik : baiks){
-            baikMapper.insert(baik);
-            count++;
-        }
+//        Integer count = 0;
+//        for(Baik baik : baiks){
+//            baikMapper.insert(baik);
+//            count++;
+//        }
+        int count = baikMapper.insertBatch(baiks);
         result = ResponseUtil.responseSuccess(count);
         return result;
     }
@@ -137,8 +136,7 @@ public class BaikServiceImpl extends ServiceImpl<BaikMapper, Baik> implements IB
 
     @Override
     public String exportExcel(Baik searchBaik) {
-        QueryWrapper queryWrapper = new QueryWrapper(searchBaik);
-        List<Baik> baiks = baikMapper.selectList(queryWrapper);
+        List<Baik> baiks = baikMapper.selectList(searchBaik);
         HandleExcel handleExcel = new HandleExcel();
         HashMap<Integer, Object> firstCell = new HashMap<Integer, Object>();
         List<Map<Integer, Object>> contentCells = new ArrayList<Map<Integer, Object>>();

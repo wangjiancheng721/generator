@@ -40,8 +40,7 @@ public class HeadServiceImpl extends ServiceImpl<HeadMapper, Head> implements IH
     @Override
     public ResponseEntity<Head> getHeadList(Head head,Page page){
         ResponseEntity<Head> result = new ResponseEntity<Head>();
-        QueryWrapper queryWrapper = new QueryWrapper(head);
-        page = headMapper.selectPage(page, queryWrapper);
+        page = headMapper.selectPage(head, page);
         result = ResponseUtil.responseSuccess(page.getRecords());
         return result;
 
@@ -53,8 +52,7 @@ public class HeadServiceImpl extends ServiceImpl<HeadMapper, Head> implements IH
     @Override
     public ResponseEntity<Head> getHeadById(Head head){
         ResponseEntity<Head> result = new ResponseEntity<Head>();
-        QueryWrapper queryWrapper = new QueryWrapper(head);
-        head = headMapper.selectOne(queryWrapper);
+        head = headMapper.selectOne(head);
         result = ResponseUtil.responseSuccess(head);
         return result;
     }
@@ -83,6 +81,7 @@ public class HeadServiceImpl extends ServiceImpl<HeadMapper, Head> implements IH
             headMapper.insert(head);
             count++;
         }
+
         result = ResponseUtil.responseSuccess(count);
         return result;
     }

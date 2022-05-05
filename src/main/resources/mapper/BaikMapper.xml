@@ -47,25 +47,25 @@
         INSERT INTO BASIC_XBAIK(BID, CODE, CCODE, CUST, TDATE, EDATE, TVOL, PRICE, APRICE, TAXRATE, TAXKUBU, SOUSUUOUT, SOUOUTKINGAKU, FDATE, HOKAN, NOTE, SYSNOTE, INPUTDATE, INPUTUSER)
         VALUES
             (
-            #{item.bid},
-            #{item.code},
-            #{item.ccode},
-            #{item.cust},
-            #{item.tdate},
-            #{item.edate},
-            #{item.tvol},
-            #{item.price},
-            #{item.aprice},
-            #{item.taxrate},
-            #{item.taxkubu},
-            #{item.sousuuout},
-            #{item.sououtkingaku},
-            #{item.fdate},
-            #{item.hokan},
-            #{item.note},
-            #{item.sysnote},
-            #{item.inputdate},
-            #{item.inputuser}
+            #{bid},
+            #{code},
+            #{ccode},
+            #{cust},
+            #{tdate},
+            #{edate},
+            #{tvol},
+            #{price},
+            #{aprice},
+            #{taxrate},
+            #{taxkubu},
+            #{sousuuout},
+            #{sououtkingaku},
+            #{fdate},
+            #{hokan},
+            #{note},
+            #{sysnote},
+            #{inputdate},
+            #{inputuser}
             )
     </insert>
 

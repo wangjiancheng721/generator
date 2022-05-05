@@ -41,17 +41,17 @@
         INSERT INTO BASIC_XCURR(CURRE, TDATE, CRATES, CRATEF, COPE, CPOINTT, CPOINTG, NOTE, SYSNOTE, INPUTDATE, INPUTUSER)
         VALUES
             (
-            #{item.curre},
-            #{item.tdate},
-            #{item.crates},
-            #{item.cratef},
-            #{item.cope},
-            #{item.cpointt},
-            #{item.cpointg},
-            #{item.note},
-            #{item.sysnote},
-            #{item.inputdate},
-            #{item.inputuser}
+            #{curre},
+            #{tdate},
+            #{crates},
+            #{cratef},
+            #{cope},
+            #{cpointt},
+            #{cpointg},
+            #{note},
+            #{sysnote},
+            #{inputdate},
+            #{inputuser}
             )
     </insert>
 

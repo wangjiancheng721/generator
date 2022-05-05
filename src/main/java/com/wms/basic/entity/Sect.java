@@ -15,7 +15,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @TableName("BASIC_XSECT")
-public class Sect extends BaseEntity {
+public class Sect extends BaseEntity{
 
     private static final long serialVersionUID = 1L;
 

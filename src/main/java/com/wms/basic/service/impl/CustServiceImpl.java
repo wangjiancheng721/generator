@@ -40,8 +40,7 @@ public class CustServiceImpl extends ServiceImpl<CustMapper, Cust> implements IC
     @Override
     public ResponseEntity<Cust> getCustList(Cust cust, Page page){
         ResponseEntity<Cust> result = new ResponseEntity<Cust>();
-        QueryWrapper queryWrapper = new QueryWrapper(cust);
-        page = custMapper.selectPage(page, queryWrapper);
+        page = custMapper.selectPage(cust, page);
         result = ResponseUtil.responseSuccess(page.getRecords());
         return result;
 
@@ -53,8 +52,7 @@ public class CustServiceImpl extends ServiceImpl<CustMapper, Cust> implements IC
     @Override
     public ResponseEntity<Cust> getCustById(Cust cust){
         ResponseEntity<Cust> result = new ResponseEntity<Cust>();
-        QueryWrapper queryWrapper = new QueryWrapper(cust);
-        cust = custMapper.selectOne(queryWrapper);
+        cust = custMapper.selectOne(cust);
         result = ResponseUtil.responseSuccess(cust);
         return result;
     }

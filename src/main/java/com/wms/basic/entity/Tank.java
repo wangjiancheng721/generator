@@ -15,7 +15,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @TableName("BASIC_XTANK")
-public class Tank extends BaseEntity {
+public class Tank extends BaseEntity{
 
     private static final long serialVersionUID = 1L;
 
